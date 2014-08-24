@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 06, 2014 at 05:16 PM
--- Server version: 5.1.41
--- PHP Version: 5.3.1
+-- Generation Time: Aug 24, 2014 at 09:19 PM
+-- Server version: 5.5.38-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.3
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -43,7 +44,6 @@ CREATE TABLE IF NOT EXISTS `karyawan` (
 --
 
 INSERT INTO `karyawan` (`NIK`, `KODE_UNIT_KERJA`, `NAMA`, `POSCODE`, `JABATAN`, `POSTITLE`, `UNITKERJA`, `WORKLOC`) VALUES
-('', '815610', '', '', '', '', '', ''),
 ('T535370', '5342A1A', 'FIRMAN FUADI, S.A.', 'AA2310051', '51', 'SP Anlap Manajemen', 'Dep Akuntansi', '3525-00'),
 ('T535371', '534010A', 'RAMA YUSRON HARBIANSYAH, S.A.', '831500051', '51', 'SP Bang Prosedur', 'Dep Organisasi & Prosedur', '3525-00  '),
 ('T535372', '535325A', 'ANDY YAZID ALYZZUDDIN, S.E.', '232100051', '51', 'SP Audit Administrasi', 'Dep Audit Administrasi', '3525-00  '),
@@ -85,12 +85,17 @@ CREATE TABLE IF NOT EXISTS `m_akses` (
   `ID_AKSES` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `LEVEL_AKSES` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID_AKSES`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `m_akses`
 --
 
+INSERT INTO `m_akses` (`ID_AKSES`, `LEVEL_AKSES`) VALUES
+(1, 'Super Administrator'),
+(2, 'Administrator'),
+(3, 'Karyawan'),
+(4, 'Sekretaris');
 
 -- --------------------------------------------------------
 
@@ -103,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `m_group` (
   `LEVEL_GROUP` int(10) unsigned DEFAULT NULL,
   `NAMA_GROUP` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID_GROUP`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
 
 --
 -- Dumping data for table `m_group`
@@ -163,17 +168,46 @@ INSERT INTO `m_group` (`ID_GROUP`, `LEVEL_GROUP`, `NAMA_GROUP`) VALUES
 CREATE TABLE IF NOT EXISTS `m_komentar` (
   `ID_Komentar` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ID_Status` int(10) unsigned NOT NULL,
+  `ID_user` int(10) NOT NULL,
   `KOMENTAR` varchar(50) DEFAULT NULL,
   `Create_Date` timestamp NULL DEFAULT NULL,
   `Last_Date` datetime DEFAULT NULL,
   PRIMARY KEY (`ID_Komentar`,`ID_Status`),
   KEY `M_KOMENTAR_FKIndex1` (`ID_Status`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `m_komentar`
 --
 
+INSERT INTO `m_komentar` (`ID_Komentar`, `ID_Status`, `ID_user`, `KOMENTAR`, `Create_Date`, `Last_Date`) VALUES
+(1, 1, 2, 'bagus', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(2, 1, 2, 'bagus2', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(3, 1, 2, 'bagus3', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(4, 1, 2, 'bagus4', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(5, 1, 2, 'bagus5', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(6, 1, 2, 'bagus6', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(7, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(8, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(9, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(10, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(11, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(12, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(13, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(14, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(15, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(16, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(17, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(18, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(19, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(20, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(21, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(22, 2, 1, 'Biasa aja bagusnya', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(23, 5, 1, 'Coba dulu komentarnya', '2014-08-24 08:33:08', '2014-08-24 15:33:08'),
+(24, 5, 1, 'Keren bro..', '2014-08-24 08:40:56', '2014-08-24 15:40:56'),
+(25, 5, 1, 'sipp lah', '2014-08-24 08:41:07', '2014-08-24 15:41:07'),
+(26, 2, 1, 'biasa bro', '2014-08-24 09:00:52', '2014-08-24 16:00:52'),
+(27, 3, 1, 'wew', '2014-08-24 09:43:26', '2014-08-24 16:43:26');
 
 -- --------------------------------------------------------
 
@@ -189,12 +223,19 @@ CREATE TABLE IF NOT EXISTS `m_status` (
   `Last_Date` datetime DEFAULT NULL,
   PRIMARY KEY (`ID_Status`),
   KEY `M_STATUS_FKIndex1` (`ID_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `m_status`
 --
 
+INSERT INTO `m_status` (`ID_Status`, `ID_user`, `User_status`, `Create_Date`, `Last_Date`) VALUES
+(1, 1, 'Ini status percobaan pertama', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(2, 1, 'Ini status percobaan kedua', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(3, 1, 'Ini status percobaan ketiga', NULL, NULL),
+(4, 1, 'Ini status percobaan ketiga', NULL, NULL),
+(5, 1, 'Ini status percobaan keempat', NULL, NULL),
+(6, 2, 'Ini status pertama saya', '2014-08-24 14:07:02', '2014-08-24 21:07:02');
 
 -- --------------------------------------------------------
 
@@ -272,12 +313,15 @@ CREATE TABLE IF NOT EXISTS `m_user` (
   KEY `User_2_FKIndex1` (`NIK`,`KODE_UNIT_KERJA`),
   KEY `M_USER_FKIndex2` (`ID_GROUP`),
   KEY `M_USER_FKIndex3` (`ID_AKSES`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `m_user`
 --
 
+INSERT INTO `m_user` (`ID_user`, `NIK`, `KODE_UNIT_KERJA`, `ID_GROUP`, `ID_AKSES`, `USERNAME`, `PASSWORD_USER`, `GAMBAR_PROFIL`, `GAMBAR_PROFIL_KECIL`, `ARRAY_TEMAN`, `PERMINTAAN_TEMAN`, `IS_AKTIF`) VALUES
+(1, 'T535370', 231100, 1, 1, 'T535370', '62379f894d4b64aa287812a606d2adffe6ce3be7', 'users/login-img27.jpg', 'users/login-img27_thumb.jpg', NULL, NULL, NULL),
+(2, 'T535371', 231100, 1, 2, 'T535371', '264391b3ed2f071da74ac5dde89effc5f841bff8', 'users/', 'users/', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -307,12 +351,7 @@ CREATE TABLE IF NOT EXISTS `pendidikan` (
   `ANIK_BARU` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID_pendidikan`,`NIK`,`KODE_UNIT_KERJA`),
   KEY `Pendidikan_FKIndex1` (`NIK`,`KODE_UNIT_KERJA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pendidikan`
---
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -343,12 +382,7 @@ CREATE TABLE IF NOT EXISTS `pengalaman_kerja` (
   PRIMARY KEY (`ID_pengalaman_kerja`,`NIK`,`KODE_UNIT_KERJA`),
   KEY `Pengalaman_Kerja_FKIndex1` (`NIK`,`KODE_UNIT_KERJA`),
   KEY `Pengalaman_Kerja_FKIndex2` (`KODE_UNIT_KERJA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pengalaman_kerja`
---
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -364,12 +398,7 @@ CREATE TABLE IF NOT EXISTS `permintaan_teman` (
   `Last_Update` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`ID_user`),
   KEY `Permintaan_Teman_FKIndex1` (`ID_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `permintaan_teman`
---
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -387,12 +416,7 @@ CREATE TABLE IF NOT EXISTS `pesan` (
   `ID_Penerima` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`ID_Pesan`),
   KEY `Pesan_FKIndex1` (`ID_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pesan`
---
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -416,14 +440,14 @@ CREATE TABLE IF NOT EXISTS `training` (
   PRIMARY KEY (`ID_training`,`NIK`,`KODE_UNIT_KERJA`),
   KEY `Training_FKIndex1` (`NIK`,`KODE_UNIT_KERJA`),
   KEY `Training_FKIndex2` (`KODE_UNIT_KERJA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `training`
 --
 
 INSERT INTO `training` (`ID_training`, `NIK`, `KODE_UNIT_KERJA`, `TRAINING_EVENT_ID`, `COURSE_ID`, `NAMA_TRAINING`, `TOPIK`, `DURASI`, `START_DATE`, `END_DATE`, `TEMPAT`, `PENYELENGGARA`) VALUES
-(1, 'T535370', '5342A1A', 'A4080000-1', 'A4080001', 'ANALISA VIBRASI', 'INVESTASI ALAT VIBRATION ANALYZER & SPM', '14', '2014-01-29', '2014-01-30', 'GRESIK', ''),
+(1, 'T535370', '231100', 'A4080000-1', 'A4080001', 'ANALISA VIBRASI', 'INVESTASI ALAT VIBRATION ANALYZER & SPM', '14', '2014-01-29', '2014-01-30', 'GRESIK', 'PT Semen Gresik'),
 (2, 'T535372', '535325A', 'A7010000-1', 'A7010001', 'KOMPETENSI', 'PELATIHAN PENYUSUNAN MATERI UJI KOMPETENSI', '32', '2014-02-18', '2014-02-21', 'GRESIK', 'BNSP (BADAN NASIONAL SERTIFIKASI PROFESI)'),
 (3, 'T535377', '535331A', '2030000-5', '2030002', 'KOMPETENSI', 'WORKSHOP PENYUSUNAN MATERI UJI KOMPETENSI', '32', '2014-01-27', '2014-01-30', 'GRESIK', 'BNSP (BADAN NASIONAL SERTIFIKASI PROFESI)'),
 (4, 'T535376', '521524A ', '2280000-75', '2280056', 'SISTEM MANAJEMEN KUALITAS', 'SHARING KNOWLEDGE SIP3', '35', '2013-12-16', '2013-12-20', 'GRESIK', 'DIKLAT PETROKIMIA GRESIK'),
@@ -472,12 +496,7 @@ CREATE TABLE IF NOT EXISTS `user_album` (
   `Nama_Foto` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID_User_Album`,`ID_user`),
   KEY `USER_ALBUM_FKIndex1` (`ID_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user_album`
---
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
