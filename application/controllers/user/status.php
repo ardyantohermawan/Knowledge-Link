@@ -1,6 +1,6 @@
 <?php
 
-class Timeline extends CI_Controller
+class Status extends CI_Controller
 {
 
 	public function __construct()
@@ -15,19 +15,17 @@ class Timeline extends CI_Controller
 							'model_pengalaman_kerja',
 							'model_group',
 							'model_status',
+							'model_komentar',
 						));
 	}
 
-	function index()
+	function komentar($id_status)
 	{
-		$id_user = ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : '1';
 		$nik = ($this->session->userdata('NIK')) ? $this->session->userdata('NIK') : 'T535370';
 		$data['profile'] = $this->model_karyawan->ambil_data_per_karyawan($nik);
-		$data['pendidikans'] = $this->model_pendidikan->ambil_data_per_karyawan($nik);
-		$data['pengalaman_kerjas'] = $this->model_pengalaman_kerja->ambil_data_per_karyawan($nik);
-		$data['trainings'] = $this->model_training->ambil_data_per_karyawan($nik);
-		$data['statuss'] = $this->model_status->ambil_data_timeline($id_user);
-		$data['content'] = 'frontend/page/timeline';
+		$data['status'] = $this->model_status->ambil_data($id_status);
+		$data['komentars'] = $this->model_komentar->ambil_data_per_status($id_status);
+		$data['content'] = 'frontend/page/komentar';
 		$this->load->view('frontend/template', $data);
 	}
 

@@ -11,11 +11,11 @@
                     </li>
                 </ul>
                 <!-- BEGIN LOGO -->
-                <a href="index.html"><img src="<?php echo base_url(); ?>assets/frontend/img/logo.png" class="logo" data-src="<?php echo base_url(); ?>assets/frontend/img/logo.png" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/logo2x.png" width="106" height="92" /></a>
+                <a href="<?php echo site_url('user/timeline') ?>"><img src="<?php echo base_url(); ?>assets/frontend/img/logo.png" class="logo" data-src="<?php echo base_url(); ?>assets/frontend/img/logo.png" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/logo2x.png" width="106" height="92" /></a>
                 <!-- END LOGO -->
                 <ul class="nav pull-right notifcation-center">
                     <li class="dropdown" id="header_task_bar"> 
-                        <a href="index.html" class="dropdown-toggle active" data-toggle="">
+                        <a href="<?php echo site_url('user/timeline') ?>" class="dropdown-toggle active" data-toggle="">
                             <div class="iconset top-home"></div>
                         </a> 
                     </li>
@@ -39,14 +39,14 @@
                         </li>
                     </ul>
                     <ul class="nav quick-section">
-                        <div class="input-prepend inside search-form no-boarder">
+                        <!-- <div class="input-prepend inside search-form no-boarder">
                             <span class="add-on">
                                 <a href="#" class="">
                                     <div class="iconset top-search"></div>
                                 </a>
                             </span>
                             <input name="" type="text" class="no-boarder " placeholder="Cari di profile" style="width:250px;" />
-                        </div>
+                        </div> -->
                     </ul>
                 </div>
                 <!-- END TOP NAVIGATION MENU -->

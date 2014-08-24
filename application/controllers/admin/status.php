@@ -14,6 +14,15 @@ class Status extends CI_Controller
 		$data['content'] = 'admin/page/status/view';
 		$this->load->view('admin/template', $data);
 	}
+
+	// mengambil komentar tiap status
+	public function detail($id)
+	{
+		$data['status'] = $this->model_status->ambil_data($id);
+		$data['komentars'] = $this->model_komentar->ambil_data_per_status($id);
+		$data['content'] = 'admin/page/komentar/view';
+		$this->load->view('admin/template', $data);
+	}
 	
 	function tambah()
 	{

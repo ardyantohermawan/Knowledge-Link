@@ -19,18 +19,14 @@
             <!-- BEGIN SIDEBAR MENU -->
             <p class="menu-title">BROWSE <span class="pull-right"><i class="icon-refresh"></i></span></p>
             <ul>
-                <li class="start active"> <a href="<?php echo site_url('user/timeline'); ?>"> <i class="icon-custom-home"></i> <span class="title">Timeline</span> <span class="selected"></span> <span class="badge badge-important pull-right">5</span></a> </li>
-                <li class=""> <a href="<?php echo site_url('user/profile'); ?>"> <i class="icon-user"></i> <span class="title">Profile Saya</span></a> </li>
-                <li class=""> <a href="<?php echo site_url('user/connections'); ?>"> <i class="icon-group"></i> <span class="title">Koneksi</span> <span class=" badge badge-disable pull-right ">203</span></a> </li>
-                <li class=""> <a href="javascript:;"> <i class="icon-custom-ui"></i> <span class="title">UI Elements</span> <span class="arrow "></span> </a>
-                    <ul class="sub-menu">
-                        <li> <a href="typography.html"> Typography </a> </li>
-                    </ul>
-                </li>
+                <li class="<?php echo (isset($page) ? (($page == 'timeline') ? 'active' : '') : '') ?>"> <a href="<?php echo site_url('user/timeline'); ?>"> <i class="icon-custom-home"></i> <span class="title">Timeline</span> <span class="selected"></span></a> </li>
+                <li class="<?php echo (isset($page) ? (($page == 'myprofile') ? 'active' : '') : '') ?>"> <a href="<?php echo site_url('user/profile'); ?>"> <i class="icon-user"></i> <span class="title">Profile Saya</span></a> </li>
+                <li class="<?php echo (isset($page) ? (($page == 'friends') ? 'active' : '') : '') ?>"> <a href="<?php echo site_url('user/connections'); ?>"> <i class="icon-group"></i> <span class="title">Koneksi</span> <span class=" badge badge-disable pull-right ">203</span></a> </li>
+                
             </ul>
           
             <div class="side-bar-widgets">
-                <p class="menu-title">FOLDER <span class="pull-right"><a href="#" class="create-folder"><i class="icon-plus"></i></a></span></p>
+                <!-- <p class="menu-title">FOLDER <span class="pull-right"><a href="#" class="create-folder"><i class="icon-plus"></i></a></span></p>
                 <ul class="folders" id="folders">
                     <li>
                         <a href="#">
@@ -67,7 +63,7 @@
                         </div>
                         <p>Statistical report</p>
                     </div>
-                </div>
+                </div> -->
             </div>
             
             <a href="#" class="scrollup">Scroll</a>

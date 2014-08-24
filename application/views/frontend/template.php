@@ -45,8 +45,11 @@
                 <div class="modal-body"> Widget settings form goes here </div>
             </div>
             <div class="clearfix"></div>
-            <div class="content">  
-                
+            <div class="content"> 
+                <div class="row-fluid">
+                    <?php $this->load->view('frontend/include/message'); ?>
+                </div>
+
                 <?php ($content) ? $this->load->view($content) : ''; ?>
 
             </div>
@@ -72,6 +75,7 @@
     <script src="<?php echo base_url(); ?>assets/frontend/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script> 
     <script src="<?php echo base_url(); ?>assets/frontend/plugins/pace/pace.min.js" type="text/javascript"></script>  
     <script src="<?php echo base_url(); ?>assets/frontend/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assets/frontend/js/tabs_accordian.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL PLUGINS -->     
 
     <!-- BEGIN CORE TEMPLATE JS --> 

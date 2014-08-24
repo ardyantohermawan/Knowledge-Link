@@ -194,5 +194,17 @@ $config = array(
 
 
     // User access validation
+    'action_status_simpan' => array(
+        array('field' => 'user_status', 'label' => 'Status', 'rules' => 'required'),
+    ),
+    'action_status_ubah' => array(
+        array('field' => 'user_status', 'label' => 'Status', 'rules' => 'required'),
+    ),
 
+    'action_komentar_simpan' => array(
+        array('field' => 'komentar', 'label' => 'Komentar', 'rules' => 'required'),
+    ),
+    'action_komentar_ubah' => array(
+        array('field' => 'komentar', 'label' => 'Komentar', 'rules' => 'required'),
+    ),
 );

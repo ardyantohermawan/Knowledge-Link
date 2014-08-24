@@ -27,36 +27,41 @@ class Login_admin extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'required|sha1|xss_clean');
         $this->form_validation->set_error_delimiters('<span class="error">', '</span>');
     
-        if($this->form_validation->run()==FALSE)
-        {
-            $this->load->view('admin/login_administrator');
-        }
-        else
+        if($this->form_validation->run() === TRUE)
         {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
-            $level = $this->input->post('level');
+            // $level = ($this->input->post('level')) ? $this->input->post('level') : 1;
        
-            $cek = $this->m_login->ambilPengguna($username, $password, 1, $level);
+            // $cek = $this->m_login->ambilPengguna($username, $password, $level);
+            $cek = $this->m_login->ambilPengguna($username, $password);
 
-            if($cek > 0)
+            if(count($cek) > 0)
             {
-                $data_user = $this->m_login->dataPengguna($username);
-                $this->session->set_userdata('isLogin', TRUE);
-                $this->session->set_userdata('username', $data_user['USERNAME']);
-                $this->session->set_userdata('username', $data_user['USERNAME']);
-                $this->session->set_userdata('level', $level);
-                redirect('admin/akses');
+                $this->session->set_userdata('id_user', $cek['ID_user']);
+                $this->session->set_userdata('NIK', $cek['NIK']);
+                $this->session->set_userdata('NAMA', $cek['NAMA']);
+                
+                if ($cek['ID_AKSES'] == 1) // Administrator
+                {
+                    $this->session->set_flashdata('message_success', 'Selamat Datang di halaman administrator.');   
+                    redirect('admin/akses');
+                }
+                else // user biasa
+                {
+                    $this->session->set_flashdata('message_success', 'Selamat Datang di halaman administrator.');   
+                    redirect('user/timeline');
+                }
             }
             else
             {
-                echo " <script>
-    		            alert('Gagal Login: Cek username , password dan level anda!');
-    		            history.go(-1);
-    		          </script>";        
+                $this->session->set_flashdata('message_error', 'Username dan password salah. Harap ulangi kembali.');
+                redirect('login_admin/login_form');
             }
-        }  
+        }
+
+        $this->load->view('index2');
     }
   
     public function logout()

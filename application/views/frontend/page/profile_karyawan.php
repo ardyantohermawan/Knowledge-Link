@@ -29,8 +29,8 @@
 								</div>
 							</div>
 							<div class="span5 user-description-box  ">
-								<h4 class="semi-bold no-margin"><?php echo $profile['NAMA'] ?></h4>
-								<h6 class="no-margin"><?php echo $profile['POSTITLE'] ?> di <?php echo $profile['NAMA_GROUP'] ?></h6>
+								<h4 class="semi-bold no-margin"><?php echo $profile_karyawan['NAMA'] ?></h4>
+								<h6 class="no-margin"><?php echo $profile_karyawan['POSTITLE'] ?> di <?php echo $profile_karyawan['NAMA_GROUP'] ?></h6>
 							</div>
 							<div class="span3">
 								<h5 class="normal">Friends ( <span class="text-success">1223</span> )</h5>
@@ -79,7 +79,8 @@
 			                        <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="javascript:;" class="remove"></a> </div>
 								</div>
 								<div class="grid-body no-border">
-									<div class="row-fluid">		        						<ul class="nav nav-tabs" id="tab-01">
+									<div class="row-fluid">		        						
+										<ul class="nav nav-tabs" id="tab-01">
 						            		<li class="active"><a href="#pendidikan">Pendidikan</a></li>
 						           			<li><a href="#pengalaman_kerja">Pengalaman Kerja</a></li>
 								            <li><a href="#pelatihan">Pelatihan</a></li>

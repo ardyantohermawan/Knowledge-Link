@@ -22,7 +22,7 @@
                             <a href="#" class="left-toggle"><i class="icon-menu-2 "></i></a>
                             <!-- LOGO -->
                             <div class="branding">
-                                <a href="index.html"><img src="images/alpona-logo.png" alt="Alpona Logo"></a>
+                                <a href="index.html"><img src="<?php echo base_url(); ?>assets/images/alpona-logo.png" alt="Alpona Logo"></a>
                             </div>
                         </div>
                         
@@ -31,14 +31,11 @@
                             <div class="loged-nav pull-right">
                                 <ul class="clearfix">
                                     <li class="log-nav dropdown pull-right"><a class="dropdown-toggle clearfix" data-toggle="dropdown">
-                                            <span class="pull-left loged-user-name">Sharmin Sultana</span><span class="logged-user-thumb pull-right"><img class="img-circle" src="images/admin-avatar.jpg" alt="Admin"></span></a>
+                                        <span class="pull-left loged-user-name"><?php echo ($this->session->userdata('NAMA')) ? $this->session->userdata('NAMA') : '' ?></span><span class="logged-user-thumb pull-right"><img class="img-circle" src="<?php echo base_url(); ?>assets/images/admin-avatar.jpg" alt="Admin"></span></a>
                                         <div class="dropdown-menu">
                                             <ul class="pull-right">
-                                                <li><a href="#">kjamanebr@gmail.com</a></li>
-                                                <li><a href="#">Edit Profile</a></li>
-                                                <li><a href="#">Inbox</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#" class="logout-link"><i class="icon-lock-3"></i> Logout</a></li>
+                                                <li><a href="<?php echo site_url('login_admin/logout'); ?>" class="logout-link"><i class="icon-lock-3"></i> Logout</a></li>
                                             </ul>
                                         </div>
                                     </li>

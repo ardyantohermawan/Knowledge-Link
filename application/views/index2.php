@@ -47,33 +47,39 @@ $(document).ready(function() {
 </div>
 <div id="wrapper">
 	<div id="page-wrapper">
+		<div>
+			<?php echo (validation_errors()) ? validation_errors() : '' ?>
+			<?php echo ($this->session->flashdata('message_error')) ? $this->session->flashdata('message_error') : '' ?>
+		</div>
 		<div id="page">
 			<div id="wide-content">
 				<div>
 					<h2>Welcome to Knowledge Link PT. Petrokimia Gresik</h2>
-					<p><img src="images/pic02.png" alt="" width="475" height="375" class="alignleft" /><form name="login-form" class="login-form" action="<?php echo site_url('login_admin/login_form'); ?>" method="post">
+					<p><img src="<?php echo base_url() ?>images/pic02.png" alt="" width="475" height="375" class="alignleft" />
+						<form name="login-form" class="login-form" action="<?php echo site_url('login_admin/login_form'); ?>" method="post">
 
-				<!--HEADER-->
-    			<div class="header">
-    			<!--TITLE--><h1>Login Form</h1><!--END TITLE-->
-    			<!--DESCRIPTION--><span>Masukkan username dan password anda.</span><!--END DESCRIPTION-->
-    			</div>
-    			<!--END HEADER-->
-	
-				<!--CONTENT-->
-    			<div class="content">
-				<!--USERNAME--><input name="username" type="text" class="input username" value="" onfocus="this.value=''" /><!--END 		USERNAME-->
-    			<!--PASSWORD--><input name="password" type="password" class="input password" value="" onfocus="this.value=''" /><!--END PASSWORD-->
-    			</div>
-    			<!--END CONTENT-->
-    
-    			<!--FOOTER-->
-    			<div class="footer">
-    			<!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button" /><!--END LOGIN BUTTON-->
-    			</div>
-    			<!--END FOOTER-->
+						<!--HEADER-->
+		    			<div class="header">
+		    			<!--TITLE--><h1>Login Form</h1><!--END TITLE-->
+		    			<!--DESCRIPTION--><span>Masukkan username dan password anda.</span><!--END DESCRIPTION-->
+		    			</div>
+		    			<!--END HEADER-->
+			
+						<!--CONTENT-->
+		    			<div class="content">
+						<!--USERNAME--><input name="username" type="text" class="input username" value="" onfocus="this.value=''" /><!--END 		USERNAME-->
+		    			<!--PASSWORD--><input name="password" type="password" class="input password" value="" onfocus="this.value=''" /><!--END PASSWORD-->
+		    			</div>
+		    			<!--END CONTENT-->
+		    
+		    			<!--FOOTER-->
+		    			<div class="footer">
+		    			<!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button" /><!--END LOGIN BUTTON-->
+		    			</div>
+		    			<!--END FOOTER-->
 
-				</form></p>
+						</form>
+					</p>
 				</div>
 			</div>
 		</div>

@@ -14,17 +14,38 @@ class Profile extends CI_Controller
 							'model_training',
 							'model_pengalaman_kerja',
 							'model_group',
+							'model_status',
+							'model_user',
 						));
 	}
 
 	function index()
 	{
+		$id_user = ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : '1';
 		$nik = ($this->session->userdata('NIK')) ? $this->session->userdata('NIK') : 'T535370';
 		$data['profile'] = $this->model_karyawan->ambil_data_per_karyawan($nik);
 		$data['pendidikans'] = $this->model_pendidikan->ambil_data_per_karyawan($nik);
 		$data['pengalaman_kerjas'] = $this->model_pengalaman_kerja->ambil_data_per_karyawan($nik);
 		$data['trainings'] = $this->model_training->ambil_data_per_karyawan($nik);
+		$data['statuss'] = $this->model_status->ambil_data_timeline($id_user);
 		$data['content'] = 'frontend/page/profile';
+		$this->load->view('frontend/template', $data);
+	}
+
+	public function detail($id='')
+	{
+		$id_user = ($id != '') ? $id : $this->session->userdata('id_user');
+		$user = $this->model_user->ambil_data($id);
+		$nik_karyawan = $user['NIK'];
+
+		$nik = ($this->session->userdata('NIK')) ? $this->session->userdata('NIK') : 'T535370';
+		$data['profile'] = $this->model_karyawan->ambil_data_per_karyawan($nik);
+		$data['profile_karyawan'] = $this->model_karyawan->ambil_data_per_karyawan($nik_karyawan);
+		$data['pendidikans'] = $this->model_pendidikan->ambil_data_per_karyawan($nik);
+		$data['pengalaman_kerjas'] = $this->model_pengalaman_kerja->ambil_data_per_karyawan($nik);
+		$data['trainings'] = $this->model_training->ambil_data_per_karyawan($nik);
+		$data['statuss'] = $this->model_status->ambil_data_timeline($id_user);
+		$data['content'] = 'frontend/page/profile_karyawan';
 		$this->load->view('frontend/template', $data);
 	}
 
