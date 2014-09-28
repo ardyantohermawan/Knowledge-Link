@@ -11,7 +11,7 @@
                     </li>
                 </ul>
                 <!-- BEGIN LOGO -->
-                <a href="<?php echo site_url('user/timeline') ?>"><img src="<?php echo base_url(); ?>assets/frontend/img/logo.png" class="logo" data-src="<?php echo base_url(); ?>assets/frontend/img/logo.png" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/logo2x.png" width="106" height="92" /></a>
+                <a href="<?php echo site_url('user/timeline') ?>"><img src="<?php echo base_url(); ?>images/pic04.png" class="logo" data-src="<?php echo base_url(); ?>images/pic04.png" data-src-retina="<?php echo base_url(); ?>images/pic04.png" width="150" height="106" /></a>
                 <!-- END LOGO -->
                 <ul class="nav pull-right notifcation-center">
                     <li class="dropdown" id="header_task_bar"> 
@@ -131,7 +131,7 @@
                                     <a href="<?php echo site_url('user/profile/edit') ?>"> Akun Saya</a>
                                 </li>
                                 <li class="divider"></li>                
-                                <li><a href="login.html"><i class="icon-off"></i>&nbsp;&nbsp;Log Out</a></li>
+                                <li><a href="<?php echo site_url('user/action/logout'); ?>"><i class="icon-off"></i>&nbsp;&nbsp;Log Out</a></li>
                             </ul>
                         </li> 
                         <li class="quicklinks"> <span class="h-seperate"></span></li> 

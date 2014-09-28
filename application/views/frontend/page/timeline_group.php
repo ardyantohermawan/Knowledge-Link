@@ -31,6 +31,20 @@ function time_elapsed_string($ptime)
 			<div class="span12">
 				<div class="tiles white span12">			
 					<div class="tiles-body">
+						<div class="row-fluid">
+							<div class="span12">
+								<div class="tiles green cover-pic-wrapper">						
+									<div class="overlayer bottom-right">
+										<div class="overlayer-wrapper">
+											<div class="padding-10 hidden-phone">									
+												<a href="<?php echo site_url('user/action/joinGroup/'.$id_group); ?>" class="btn btn-primary btn-small"> <?php echo ($anggota) ? '<icon class="icon-ok"></icon> ': ''; ?> Bergabung</a>
+											</div>
+										</div>
+									</div>
+									<img src="<?php echo base_url(); ?>assets/frontend/img/cover_pic.png" />
+								</div>
+							</div>
+						</div>
 						<h5><span class="semi-bold">Mungkin Anda mengenal</span>&nbsp;&nbsp; <a href="#" class="text-info normal-text">lihat selebihnya</a></h5>
 						<div class="row-fluid">
 							<div class="span6">
@@ -80,9 +94,11 @@ function time_elapsed_string($ptime)
 				</div>
 			</div>
 			<br />
+			<?php if ($anggota): ?>
+				
 			<div class="row-fluid">
 			 	<div class="span12">
-				  	<form action="<?php echo site_url('user/action/tambahStatus'); ?>" method="POST">
+				  	<form action="<?php echo site_url('user/action/tambahStatusGroup/'.$id_group); ?>" method="POST">
 						<div class="tiles white">
 							<textarea rows="3" class="span12 user-status-box post-input" name="user_status" placeholder="Apa yang Anda pikirkan?"></textarea>
 						</div>
@@ -95,6 +111,7 @@ function time_elapsed_string($ptime)
 				  	</form>
 				</div>
 			</div>
+			<?php endif ?>
 			<br />
 			<br />
 			<?php if (isset($statuss)): ?>
@@ -134,7 +151,7 @@ function time_elapsed_string($ptime)
 										<div class="clearfix"></div>
 									
 										<ul class="action-bar">
-											<li><a href="<?php echo site_url('user/status/komentar/'.$status['ID_Status']); ?>" class="muted"><i class="icon-comment"></i> <?php echo $status['jumlah_komentar'] ?> Komentar</a></li>
+											<li><a href="<?php echo site_url('user/status/komentar/'.$status['ID_Group_Status']); ?>" class="muted"><i class="icon-comment"></i> <?php echo $status['jumlah_komentar'] ?> Komentar</a></li>
 										</ul>
 										<div class="clearfix"></div>
 									</div>	
