@@ -25,6 +25,8 @@ class Status extends CI_Controller
 		$data['profile'] = $this->model_karyawan->ambil_data_per_karyawan($nik);
 		$data['status'] = $this->model_status->ambil_data($id_status);
 		$data['komentars'] = $this->model_komentar->ambil_data_per_status($id_status);
+		$data['groups'] = $this->model_group->ambil_data_parent();
+		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['content'] = 'frontend/page/komentar';
 		$this->load->view('frontend/template', $data);
 	}

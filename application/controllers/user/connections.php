@@ -24,6 +24,8 @@ class Connections extends CI_Controller
 		$data['pendidikans'] = $this->model_pendidikan->ambil_data_per_karyawan($nik);
 		$data['pengalaman_kerjas'] = $this->model_pengalaman_kerja->ambil_data_per_karyawan($nik);
 		$data['trainings'] = $this->model_training->ambil_data_per_karyawan($nik);
+		$data['groups'] = $this->model_group->ambil_data_parent();
+		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['content'] = 'frontend/page/connections';
 		$this->load->view('frontend/template', $data);
 	}

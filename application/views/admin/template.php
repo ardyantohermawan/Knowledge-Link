@@ -22,7 +22,7 @@
                             <a href="#" class="left-toggle"><i class="icon-menu-2 "></i></a>
                             <!-- LOGO -->
                             <div class="branding">
-                                <a href="index.html"><img src="<?php echo base_url(); ?>assets/images/alpona-logo.png" alt="Alpona Logo"></a>
+                                <a href="<?php echo site_url(); ?>"><img src="<?php echo base_url(); ?>images/pic04.png" alt="Alpona Logo"></a>
                             </div>
                         </div>
                         

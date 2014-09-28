@@ -9,7 +9,7 @@
 								</div>
 							</div>
 						</div>
-					<img src="<?php echo base_url(); ?>assets/frontend/img/cover_pic.png" />
+						<img src="<?php echo base_url(); ?>assets/frontend/img/cover_pic.png" />
 					</div>
 					<div class="tiles white">
 						<div class="row-fluid">

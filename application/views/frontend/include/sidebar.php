@@ -17,55 +17,36 @@
             <!-- END MINI-PROFILE -->
 
             <!-- BEGIN SIDEBAR MENU -->
-            <p class="menu-title">BROWSE <span class="pull-right"><i class="icon-refresh"></i></span></p>
+            <p class="menu-title">BROWSE </p>
             <ul>
                 <li class="<?php echo (isset($page) ? (($page == 'timeline') ? 'active' : '') : '') ?>"> <a href="<?php echo site_url('user/timeline'); ?>"> <i class="icon-custom-home"></i> <span class="title">Timeline</span> <span class="selected"></span></a> </li>
                 <li class="<?php echo (isset($page) ? (($page == 'myprofile') ? 'active' : '') : '') ?>"> <a href="<?php echo site_url('user/profile'); ?>"> <i class="icon-user"></i> <span class="title">Profile Saya</span></a> </li>
                 <li class="<?php echo (isset($page) ? (($page == 'friends') ? 'active' : '') : '') ?>"> <a href="<?php echo site_url('user/connections'); ?>"> <i class="icon-group"></i> <span class="title">Koneksi</span> <span class=" badge badge-disable pull-right ">203</span></a> </li>
-                
             </ul>
-          
-            <div class="side-bar-widgets">
-                <!-- <p class="menu-title">FOLDER <span class="pull-right"><a href="#" class="create-folder"><i class="icon-plus"></i></a></span></p>
-                <ul class="folders" id="folders">
-                    <li>
-                        <a href="#">
-                            <div class="status-icon green"></div> My quick tasks 
-                        </a> 
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="status-icon red"></div> To do list 
-                        </a> 
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="status-icon blue"></div> Projects
-                        </a> 
-                    </li>
-                    <li id="folder-input" class="folder-input" style="display:none">
-                        <input type="text" placeholder="Name of folder" class="no-boarder folder-name" name="" id="folder-name" />
-                    </li>
-                </ul>
-                <p class="menu-title">PROJECTS </p>
-                <div class="status-widget">
-                    <div class="status-widget-wrapper">
-                        <div class="title">Freelancer
-                            <a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a>
-                        </div>
-                        <p>Redesign home page</p>
-                    </div>
-                </div>
-                <div class="status-widget">
-                    <div class="status-widget-wrapper">
-                        <div class="title">envato
-                            <a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a>
-                        </div>
-                        <p>Statistical report</p>
-                    </div>
-                </div> -->
-            </div>
-            
+
+            <p class="menu-title">GROUPS </p>
+            <ul>
+                <?php if (isset($groups)): ?>
+                    <?php foreach ($groups as $row): ?>
+                        
+                <li class=""> <a href="javascript:;"> <i class="icon-custom-ui"></i> <span class="title"><?php echo ucfirst(strtolower($row['NAMA_GROUP'])); ?></span> <span class="arrow "></span> </a>
+                    <ul class="sub-menu">
+                        <?php if (isset($child_groups)): ?>
+                            <?php foreach ($child_groups as $rowChild): ?>
+                                <?php if ($rowChild['PARENT_ID_GROUP'] == $row['ID_GROUP']): ?>
+                                    <li> <a href="<?php echo site_url('group/timeline/id/'.$rowChild['ID_GROUP']); ?>"> <?php echo ucfirst(strtolower($rowChild['NAMA_GROUP'])); ?> </a> </li>
+                                    
+                                <?php endif ?>
+                                
+                            <?php endforeach ?>
+                        <?php endif ?>
+                    </ul>
+                </li>
+                    
+                    <?php endforeach ?>
+                <?php endif ?>
+            </ul>
+
             <a href="#" class="scrollup">Scroll</a>
             <div class="clearfix"></div>
             <!-- END SIDEBAR MENU -->
