@@ -207,4 +207,19 @@ $config = array(
     'action_komentar_ubah' => array(
         array('field' => 'komentar', 'label' => 'Komentar', 'rules' => 'required'),
     ),
+
+
+    'action_group_status_simpan' => array(
+        array('field' => 'user_status', 'label' => 'Status', 'rules' => 'required'),
+    ),
+    'action_group_status_ubah' => array(
+        array('field' => 'user_status', 'label' => 'Status', 'rules' => 'required'),
+    ),
+
+    'action_group_komentar_simpan' => array(
+        array('field' => 'komentar', 'label' => 'Komentar', 'rules' => 'required'),
+    ),
+    'action_group_komentar_ubah' => array(
+        array('field' => 'komentar', 'label' => 'Komentar', 'rules' => 'required'),
+    ),
 );
