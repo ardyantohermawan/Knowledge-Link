@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 24, 2014 at 09:19 PM
+-- Generation Time: Sep 28, 2014 at 07:14 PM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.3
 
@@ -105,6 +105,7 @@ INSERT INTO `m_akses` (`ID_AKSES`, `LEVEL_AKSES`) VALUES
 
 CREATE TABLE IF NOT EXISTS `m_group` (
   `ID_GROUP` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `PARENT_ID_GROUP` int(10) unsigned DEFAULT NULL,
   `LEVEL_GROUP` int(10) unsigned DEFAULT NULL,
   `NAMA_GROUP` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID_GROUP`)
@@ -114,50 +115,90 @@ CREATE TABLE IF NOT EXISTS `m_group` (
 -- Dumping data for table `m_group`
 --
 
-INSERT INTO `m_group` (`ID_GROUP`, `LEVEL_GROUP`, `NAMA_GROUP`) VALUES
-(1, 1, 'BID. PEMASARAN'),
-(2, 1, 'BID. KEUANGAN'),
-(3, 1, 'BID. PRODUKSI'),
-(4, 1, 'BID. PEMELIHARAAN'),
-(5, 1, 'BID. TEKNIK, PENGEMBANGAN, PENGADAAN, DAN RISET'),
-(6, 1, 'BID. CORPORATE SECRETARY'),
-(7, 1, 'BID. SDM & UMUM'),
-(8, 1, 'BID. AUDIT'),
-(9, 2, 'PEMASARAN'),
-(10, 2, 'DISTRIBUSI'),
-(11, 2, 'KEUANGAN'),
-(12, 2, 'AKUNTANSI'),
-(13, 2, 'ANGGARAN'),
-(14, 2, 'PRODUKSI'),
-(15, 2, 'PROSES'),
-(16, 2, 'LAB DAN PENGELOLAAN ENERGI'),
-(17, 2, 'LK3'),
-(18, 2, 'PEMELIHARAAN PABRIK'),
-(19, 2, 'MEKANIK'),
-(20, 2, 'INSTRUMENT'),
-(21, 2, 'LISTRIK'),
-(22, 2, 'BENGKEL'),
-(23, 2, 'INSPEKSI'),
-(24, 2, 'RANCANG BANGUN'),
-(25, 2, 'JASA TEKNIK DAN KONSTRUKSI'),
-(26, 2, 'MANUFAKTUR / PERBENGKELAN'),
-(27, 2, 'PENGEMBANGAN'),
-(28, 2, 'TEKNOLOGI DAN INFORMASI'),
-(29, 2, 'PENGADAAN'),
-(30, 2, 'PENGELOLAAN PELABUHAN'),
-(31, 2, 'PENGELOLAAN PRASARANA DAN KAWASAN'),
-(32, 2, 'RISET'),
-(33, 2, 'KESEKRETARIATAN DAN HUKUM'),
-(34, 2, 'HUBUNGAN MASYARAKAT'),
-(35, 2, 'PERWAKILAN JAKARTA'),
-(36, 2, 'KEMITRAAN DAN BINA LINGKUNGAN'),
-(37, 2, 'PERSONALIA'),
-(38, 2, 'ORGANISASI & PROSEDUR'),
-(39, 2, 'PENDIDIKAN DAN PELATIHAN'),
-(40, 2, 'PELAYANAN UMUM'),
-(41, 2, 'KEAMANAN'),
-(42, 2, 'AUDIT INTERN'),
-(43, 2, 'UMUM/PENUNJANG');
+INSERT INTO `m_group` (`ID_GROUP`, `PARENT_ID_GROUP`, `LEVEL_GROUP`, `NAMA_GROUP`) VALUES
+(1, 0, 1, 'BID. PEMASARAN'),
+(2, 0, 1, 'BID. KEUANGAN'),
+(3, 0, 1, 'BID. PRODUKSI'),
+(4, 0, 1, 'BID. PEMELIHARAAN'),
+(5, 0, 1, 'BID. TEKNIK, PENGEMBANGAN, PENGADAAN, DAN RISET'),
+(6, 0, 1, 'BID. CORPORATE SECRETARY'),
+(7, 0, 1, 'BID. SDM & UMUM'),
+(8, 0, 1, 'BID. AUDIT'),
+(9, 1, 2, 'PEMASARAN'),
+(10, 1, 2, 'DISTRIBUSI'),
+(11, 2, 2, 'KEUANGAN'),
+(12, 2, 2, 'AKUNTANSI'),
+(13, 2, 2, 'ANGGARAN'),
+(14, 3, 2, 'PRODUKSI'),
+(15, 3, 2, 'PROSES'),
+(16, 3, 2, 'LAB DAN PENGELOLAAN ENERGI'),
+(17, 3, 2, 'LK3'),
+(18, 4, 2, 'PEMELIHARAAN PABRIK'),
+(19, 4, 2, 'MEKANIK'),
+(20, 4, 2, 'INSTRUMENT'),
+(21, 4, 2, 'LISTRIK'),
+(22, 4, 2, 'BENGKEL'),
+(23, 4, 2, 'INSPEKSI'),
+(24, 5, 2, 'RANCANG BANGUN'),
+(25, 5, 2, 'JASA TEKNIK DAN KONSTRUKSI'),
+(26, 5, 2, 'MANUFAKTUR / PERBENGKELAN'),
+(27, 5, 2, 'PENGEMBANGAN'),
+(28, 5, 2, 'TEKNOLOGI DAN INFORMASI'),
+(29, 5, 2, 'PENGADAAN'),
+(30, 5, 2, 'PENGELOLAAN PELABUHAN'),
+(31, 5, 2, 'PENGELOLAAN PRASARANA DAN KAWASAN'),
+(32, 5, 2, 'RISET'),
+(33, 6, 2, 'KESEKRETARIATAN DAN HUKUM'),
+(34, 6, 2, 'HUBUNGAN MASYARAKAT'),
+(35, 6, 2, 'PERWAKILAN JAKARTA'),
+(36, 6, 2, 'KEMITRAAN DAN BINA LINGKUNGAN'),
+(37, 7, 2, 'PERSONALIA'),
+(38, 7, 2, 'ORGANISASI & PROSEDUR'),
+(39, 7, 2, 'PENDIDIKAN DAN PELATIHAN'),
+(40, 7, 2, 'PELAYANAN UMUM'),
+(41, 7, 2, 'KEAMANAN'),
+(42, 8, 2, 'AUDIT INTERN'),
+(43, 99, 2, 'UMUM/PENUNJANG');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_group_komentar`
+--
+
+CREATE TABLE IF NOT EXISTS `m_group_komentar` (
+  `ID_Group_Komentar` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_Group_Status` int(11) NOT NULL,
+  `ID_user` int(11) NOT NULL,
+  `KOMENTAR` varchar(200) NOT NULL,
+  `Create_Date` datetime NOT NULL,
+  `Last_Date` datetime NOT NULL,
+  PRIMARY KEY (`ID_Group_Komentar`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_group_status`
+--
+
+CREATE TABLE IF NOT EXISTS `m_group_status` (
+  `ID_Group_Status` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_GROUP` int(11) NOT NULL,
+  `ID_User` int(11) NOT NULL,
+  `User_status` varchar(200) NOT NULL,
+  `Create_Date` datetime NOT NULL,
+  `Last_Date` datetime NOT NULL,
+  PRIMARY KEY (`ID_Group_Status`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `m_group_status`
+--
+
+INSERT INTO `m_group_status` (`ID_Group_Status`, `ID_GROUP`, `ID_User`, `User_status`, `Create_Date`, `Last_Date`) VALUES
+(1, 42, 1, 'wow', '2014-09-28 16:57:00', '2014-09-28 16:57:00'),
+(2, 9, 1, 'beuh', '2014-09-28 17:08:39', '2014-09-28 17:08:39');
 
 -- --------------------------------------------------------
 
@@ -232,9 +273,9 @@ CREATE TABLE IF NOT EXISTS `m_status` (
 INSERT INTO `m_status` (`ID_Status`, `ID_user`, `User_status`, `Create_Date`, `Last_Date`) VALUES
 (1, 1, 'Ini status percobaan pertama', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
 (2, 1, 'Ini status percobaan kedua', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
-(3, 1, 'Ini status percobaan ketiga', NULL, NULL),
-(4, 1, 'Ini status percobaan ketiga', NULL, NULL),
-(5, 1, 'Ini status percobaan keempat', NULL, NULL),
+(3, 1, 'Ini status percobaan ketiga', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(4, 1, 'Ini status percobaan ketiga', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
+(5, 1, 'Ini status percobaan keempat', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
 (6, 2, 'Ini status pertama saya', '2014-08-24 14:07:02', '2014-08-24 21:07:02');
 
 -- --------------------------------------------------------
@@ -383,6 +424,30 @@ CREATE TABLE IF NOT EXISTS `pengalaman_kerja` (
   KEY `Pengalaman_Kerja_FKIndex1` (`NIK`,`KODE_UNIT_KERJA`),
   KEY `Pengalaman_Kerja_FKIndex2` (`KODE_UNIT_KERJA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permintaan_group`
+--
+
+CREATE TABLE IF NOT EXISTS `permintaan_group` (
+  `ID_permintaan` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_GROUP` int(11) NOT NULL,
+  `ID_user` int(11) NOT NULL,
+  `Create_Date` datetime NOT NULL,
+  `Last_Date` datetime NOT NULL,
+  PRIMARY KEY (`ID_permintaan`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `permintaan_group`
+--
+
+INSERT INTO `permintaan_group` (`ID_permintaan`, `ID_GROUP`, `ID_user`, `Create_Date`, `Last_Date`) VALUES
+(1, 9, 1, '2014-09-28 18:31:17', '2014-09-28 18:31:17'),
+(2, 10, 1, '2014-09-28 18:42:06', '2014-09-28 18:42:06'),
+(3, 14, 1, '2014-09-28 18:42:48', '2014-09-28 18:42:48');
 
 -- --------------------------------------------------------
 
