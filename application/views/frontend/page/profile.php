@@ -5,7 +5,7 @@
 						<div class="overlayer bottom-right">
 							<div class="overlayer-wrapper">
 								<div class="padding-10 hidden-phone">									
-									<button type="button" class="btn btn-primary btn-small"><i class="icon-ok"></i>&nbsp;&nbsp;Following</button> <button type="button" class="btn btn-primary btn-small">Add</button>
+									<!-- <button type="button" class="btn btn-primary btn-small"><i class="icon-plus"></i> Tambahkan sebagai teman</button> -->
 								</div>
 							</div>
 						</div>
@@ -16,16 +16,6 @@
 							<div class="span3">
 								<div class="user-profile-pic">	
 									<img width="69" height="69" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/avatar2x.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/avatar.jpg" src="<?php echo base_url(); ?>assets/frontend/img/profiles/avatar.jpg" />
-								</div>
-								 <div class="user-mini-description">
-									<h3 class="text-success semi-bold">
-									2548
-									</h3>
-									<h5>Followers</h5>
-									<h3 class="text-success semi-bold">
-									457
-									</h3>
-									<h5>Following</h5>
 								</div>
 							</div>
 							<div class="span5 user-description-box  ">
