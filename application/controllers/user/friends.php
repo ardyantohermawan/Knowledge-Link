@@ -1,6 +1,6 @@
 <?php
 
-class Connections extends CI_Controller
+class Friends extends CI_Controller
 {
 
 	public function __construct()
@@ -26,7 +26,7 @@ class Connections extends CI_Controller
 		$data['trainings'] = $this->model_training->ambil_data_per_karyawan($nik);
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
-		$data['content'] = 'frontend/page/connections';
+		$data['content'] = 'frontend/page/friends';
 		$this->load->view('frontend/template', $data);
 	}
 

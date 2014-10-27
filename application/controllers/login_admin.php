@@ -50,7 +50,7 @@ class Login_admin extends CI_Controller
                 }
                 else // user biasa
                 {
-                    $this->session->set_flashdata('message_success', 'Selamat Datang di halaman administrator.');   
+                    $this->session->set_flashdata('message_success', 'Selamat Datang.');   
                     redirect('user/timeline');
                 }
             }
