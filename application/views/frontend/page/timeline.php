@@ -28,60 +28,8 @@ function time_elapsed_string($ptime)
 }
 ?>
 		<div class="row-fluid">
-			<div class="span12">
-				<div class="tiles white span12">			
-					<div class="tiles-body">
-						<h5><span class="semi-bold">Mungkin Anda mengenal</span>&nbsp;&nbsp; <a href="#" class="text-info normal-text">lihat selebihnya</a></h5>
-						<div class="row-fluid">
-							<div class="span6">
-								<div class="friend-list">
-									<div class="friend-profile-pic">
-										<div class="user-profile-pic-normal">
-										<img width="35" height="35" src="<?php echo base_url(); ?>assets/frontend/img/profiles/d.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/d.jpg" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/d2x.jpg" />
-										</div>
-									</div>
-									<div class="friend-details-wrapper">
-										<div class="friend-name">
-											Johne Drake
-										</div>
-										<div class="friend-description">
-											James Smith in commman
-										</div>
-									</div>
-									<div class="action-bar pull-right">
-										<button class="btn btn-primary" type="button">Tambahkan</button>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-							<div class="span6">
-								<div class="friend-list">
-									<div class="friend-profile-pic">
-										<div class="user-profile-pic-normal">
-										<img width="35" height="35" alt="" src="<?php echo base_url(); ?>assets/frontend/img/profiles/b.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/b.jpg" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/b2x.jpg" />
-										</div>
-									</div>
-									<div class="friend-details-wrapper">
-										<div class="friend-name">
-											Johne Drake
-										</div>
-										<div class="friend-description">
-											James Smith in commman
-										</div>
-									</div>
-									<div class="action-bar pull-right">
-										<button class="btn btn-primary" type="button">Tambahkan</button>
-									</div>
-									<div class="clearfix"></div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br />
 			<div class="row-fluid">
-			 	<div class="span12">
+			 	<div class="tiles white span12">
 				  	<form action="<?php echo site_url('user/action/tambahStatus'); ?>" method="POST">
 						<div class="tiles white">
 							<textarea rows="3" class="span12 user-status-box post-input" name="user_status" placeholder="Apa yang Anda pikirkan?"></textarea>

@@ -239,6 +239,19 @@ class Action extends CI_Controller
 	}
 
 	// FRIEND REQUEST
+	public function tambahkanTeman($id_user)
+	{
+		$data = array(
+				'ID_User_Request' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
+				'ID_User_Received' => $id_user,
+				'Create_Date' => date('Y-m-d H:i:s'),
+				'Last_Update' => date('Y-m-d H:i:s')
+			);
+		$this->model_karyawan->tambah_pertemanan($data);
+		$this->session->set_flashdata('message_success', 'Berhasil menambahkan pertemanan.');
+		redirect('user/friends');
+	}
+
 
 	// JOIN GROUP
 

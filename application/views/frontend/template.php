@@ -55,7 +55,7 @@
             </div>
         </div>
         
-        <?php $this->load->view('frontend/include/chat'); ?>
+        <?php // $this->load->view('frontend/include/chat'); ?>
 
     </div>
     <!-- END CONTAINER --> 
@@ -75,8 +75,11 @@
     <script src="<?php echo base_url(); ?>assets/frontend/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script> 
     <script src="<?php echo base_url(); ?>assets/frontend/plugins/pace/pace.min.js" type="text/javascript"></script>  
     <script src="<?php echo base_url(); ?>assets/frontend/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assets/frontend/plugins/jquery-mixitup/jquery.mixitup.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>assets/frontend/js/tabs_accordian.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL PLUGINS -->     
+    
+    <script src="<?php echo base_url(); ?>assets/frontend/js/search_results.js" type="text/javascript"></script> 
 
     <!-- BEGIN CORE TEMPLATE JS --> 
     <script src="<?php echo base_url(); ?>assets/frontend/js/core.js" type="text/javascript"></script> 

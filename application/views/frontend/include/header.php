@@ -111,13 +111,13 @@
                             <div class="user-details"> 
                                 <div class="username">
                                     <span class="badge badge-important">3</span> 
-                                    <?php echo $profile['NAMA'] ?>                                    
+                                    <?php echo $profile['NAMA'] ?>
                                 </div>                      
                             </div> 
                             <div class="iconset top-down-arrow"></div>
                         </a>                        
                         <div class="profile-pic"> 
-                            <img alt="" src="<?php echo base_url(); ?>assets/frontend/img/profiles/avatar_small.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/avatar_small.jpg" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/avatar_small2x.jpg" width="35" height="35" /> 
+                            <img alt="" src="<?php echo base_url(); ?>/<?php echo $profile['GAMBAR_PROFIL_KECIL']; ?>" data-src="<?php echo base_url(); ?>/<?php echo $profile['GAMBAR_PROFIL_KECIL']; ?>" data-src-retina="<?php echo base_url(); ?>/<?php echo $profile['GAMBAR_PROFIL_KECIL']; ?>" width="35" height="35" /> 
                         </div>                  
                     </div>
                     
@@ -135,7 +135,7 @@
                             </ul>
                         </li> 
                         <li class="quicklinks"> <span class="h-seperate"></span></li> 
-                        <li class="quicklinks">     
+                        <!-- <li class="quicklinks">     
                             <a id="chat-menu-toggle" href="#sidr" class="chat-menu-toggle"><div class="iconset top-chat-dark "><span class="badge badge-important hide" id="chat-message-count">1</span></div>
                             </a> 
                             <div class="simple-chat-popup chat-menu-toggle hide">
@@ -146,7 +146,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </li> 
+                        </li>  -->
                     </ul>
                 </div>
                 <!-- END CHAT TOGGLER -->

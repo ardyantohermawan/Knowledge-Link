@@ -35,8 +35,8 @@
     <!-- "TABLE" HEADER CONTAINING SORT BUTTONS (HIDDEN IN GRID MODE)-->
     <div class="list_header">
         <div id="SortByName" class="meta name active desc"> Nama &nbsp; <span data-order="desc" data-sort="data-name" class="sort anim150 asc active"></span> <span data-order="asc" data-sort="data-name" class="sort anim150 desc"></span> </div>
-        <div class="meta region">Group <span data-order="asc" data-sort="data-group" class="sort anim150 asc"></span> <span data-order="desc" data-sort="data-area" class="sort anim150 desc"></span></div>
-        <div class="meta rec">Jabatan </div>
+        <div class="meta region">Group & Jabatan <span data-order="asc" data-sort="data-group" class="sort anim150 asc"></span> <span data-order="desc" data-sort="data-area" class="sort anim150 desc"></span></div>
+        <div class="meta rec">Aksi </div>
     </div>
     <!-- FAIL ELEMENT -->
     <div class="fail_element anim250">Maaf &mdash; data tidak ditemukan.</div>
@@ -56,14 +56,15 @@
                 </div>
             </div>
             <div class="meta region">
-                <p><?php echo $row['NAMA_GROUP'] ?></p>
-            </div>
-            <div class="meta rec">
                 <ul>
+                    <li><?php echo $row['NAMA_GROUP'] ?></li>
                     <li><?php echo $row['CONTENT_UNIT_KERJA'] ?></li>
                     <li><?php echo $row['POSTITLE'] ?></li>
                     <li><?php echo $row['UNITKERJA'] ?></li>
                 </ul>
+            </div>
+            <div class="meta rec">
+                <a href="<?php echo site_url('user/action/tambahkanTeman/'.$row['ID_user']); ?>" class="btn btn-primary">Tambahkan</a>
             </div>
         </li>
 

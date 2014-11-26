@@ -15,51 +15,13 @@
 						<div class="row-fluid">
 							<div class="span3">
 								<div class="user-profile-pic">	
-									<img width="69" height="69" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/avatar2x.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/avatar.jpg" src="<?php echo base_url(); ?>assets/frontend/img/profiles/avatar.jpg" />
+									<img width="69" height="69" data-src-retina="<?php echo base_url(); ?>/<?php echo $profile_karyawan['GAMBAR_PROFIL']; ?>" data-src="<?php echo base_url(); ?>/<?php echo $profile_karyawan['GAMBAR_PROFIL']; ?>" src="<?php echo base_url(); ?>/<?php echo $profile_karyawan['GAMBAR_PROFIL_KECIL']; ?>" />
 								</div>
 							</div>
 							<div class="span5 user-description-box  ">
 								<h4 class="semi-bold no-margin"><?php echo $profile_karyawan['NAMA'] ?></h4>
 								<h6 class="no-margin"><?php echo $profile_karyawan['POSTITLE'] ?> di <?php echo $profile_karyawan['NAMA_GROUP'] ?></h6>
-							</div>
-							<div class="span3">
-								<h5 class="normal">Friends ( <span class="text-success">1223</span> )</h5>
-								<ul class="my-friends">
-									<li><div class="profile-pic"> 
-										<img width="35" height="35" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/d2x.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/d.jpg" src="<?php echo base_url(); ?>assets/frontend/img/profiles/d.jpg" />
-										</div>
-									</li>
-									<li><div class="profile-pic"> 
-										<img width="35" height="35" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/c2x.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/c.jpg" src="<?php echo base_url(); ?>assets/frontend/img/profiles/c.jpg" />
-										</div>
-									</li>
-									<li><div class="profile-pic"> 
-										<img width="35" height="35" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/h2x.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/h.jpg" src="<?php echo base_url(); ?>assets/frontend/img/profiles/h.jpg" />
-										</div>
-									</li>
-									<li><div class="profile-pic"> 
-										<img width="35" height="35" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/avatar_small2x.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/avatar_small.jpg" src="<?php echo base_url(); ?>assets/frontend/img/profiles/avatar_small.jpg" alt="" /> 
-										</div>
-									</li>
-									<li><div class="profile-pic"> 
-										<img width="35" height="35" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/e2x.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/e.jpg" src="<?php echo base_url(); ?>assets/frontend/img/profiles/e.jpg" alt="" /> 
-										</div>
-									</li>
-									<li><div class="profile-pic"> 
-										<img width="35" height="35" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/b2x.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/b.jpg" src="<?php echo base_url(); ?>assets/frontend/img/profiles/b.jpg" alt="" /> 
-										</div>
-									</li>
-									<li><div class="profile-pic"> 
-										<img width="35" height="35" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/h2x.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/h.jpg" src="<?php echo base_url(); ?>assets/frontend/img/profiles/h.jpg" />
-										</div>
-									</li>
-									<li><div class="profile-pic"> 
-										<img width="35" height="35" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/d2x.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/d.jpg" src="<?php echo base_url(); ?>assets/frontend/img/profiles/d.jpg" />
-										</div>
-									</li>
-
-								</ul>	
-							</div>				
+							</div>			
 						</div>
 				
 						<div class="tiles-body">
@@ -233,7 +195,7 @@
 											<div class="post">
 												<div class="user-profile-pic-wrapper">
 													<div class="user-profile-pic-normal">
-															<img width="35" height="35" src="<?php echo base_url(); ?>assets/frontend/img/profiles/c.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/c.jpg" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/c2x.jpg" />
+															<img width="35" height="35" src="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL']; ?>" data-src="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL']; ?>" data-src-retina="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL']; ?>" />
 														</div>
 												</div>
 												<div class="info-wrapper">					
