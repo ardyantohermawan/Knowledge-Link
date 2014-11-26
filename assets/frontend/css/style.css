@@ -6238,7 +6238,7 @@ ul.my-friends li .profile-pic{
 .img_wrapper img{
 	position: absolute;
 	width: 100%;
-	height: auto;
+	height: 100%;
 	opacity: 1;
 	top: 0;	
 	-webkit-transition: opacity 150ms;
@@ -6373,7 +6373,8 @@ ul.my-friends li .profile-pic{
 	padding: 18px 0 14px;
 	border-bottom: 1px solid #d7dbe0;
 	text-align: right;
-	height: 99px;
+	/*height: 99px;*/
+	height: 200px;
 	width: 100%;
 	line-height: 99px;
 	vertical-align: top;
@@ -6398,7 +6399,7 @@ ul.my-friends li .profile-pic{
 #Parks.list .img_wrapper{
 	display: inline-block;
 	width: 177px;
-	height: 95px;
+	height: 100%;
 	vertical-align: top;
 	margin-right: 30px;
 }
@@ -6410,7 +6411,7 @@ ul.my-friends li .profile-pic{
 
 #Parks.list .titles h2{
 	font-weight: 700;
-	font-size: 17px;
+	font-size: 14px;
 	text-transform: uppercase;
 	color: #47a497;
 	letter-spacing: 2px;

@@ -1,3 +1,32 @@
+<?php
+function time_elapsed_string($ptime)
+{
+    $etime = time() - $ptime;
+
+    if ($etime < 1)
+    {
+        return '0 seconds';
+    }
+
+    $a = array( 12 * 30 * 24 * 60 * 60  =>  'tahun',
+                30 * 24 * 60 * 60       =>  'bulan',
+                24 * 60 * 60            =>  'hari',
+                60 * 60                 =>  'jam',
+                60                      =>  'menit',
+                1                       =>  'detik'
+                );
+
+    foreach ($a as $secs => $str)
+    {
+        $d = $etime / $secs;
+        if ($d >= 1)
+        {
+            $r = round($d);
+            return $r . ' ' . $str . ($r > 1 ? '' : '') . ' yang lalu';
+        }
+    }
+}
+?>
 			<div class="row-fluid">
 				<div class="span12">
 	                <div class="grid simple horizontal green">
@@ -11,7 +40,7 @@
 							<div class="post">
 								<div class="user-profile-pic-wrapper">
 									<div class="user-profile-pic-normal">
-										<img width="35" height="35" src="<?php echo base_url(); ?>assets/frontend/img/profiles/c.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/c.jpg" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/c2x.jpg" />
+										<img width="35" height="35" src="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL_KECIL']; ?>" data-src="<?php echo base_url(); ?>/<?php echo $profile['GAMBAR_PROFIL_KECIL']; ?>" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/c2x.jpg" />
 									</div>
 								</div>
 								<div class="info-wrapper">					
@@ -23,13 +52,13 @@
 									</div>	
 									<div class="more-details">
 										<ul class="post-links">
-											<li><a href="#" class="muted">2 Minutes ago</a></li>
+											<li><a href="#" class="muted"><?php echo time_elapsed_string(strtotime($status['Create_Date'])) ?></a></li>
 										</ul>
 									</div>
 									<div class="clearfix"></div>
 								
 									<ul class="action-bar">
-										<li><a href="#" class="muted"><i class="icon-comment"></i> 1584</a> Komentar</li>
+										<li><a href="#" class="muted"><i class="icon-comment"></i> <?php echo (count($komentars) > 0) ? count($komentars) : 0; ?></a> Komentar</li>
 										<li></li>
 									</ul>
 
@@ -40,7 +69,7 @@
 									<div class="post comments-section">
 											<div class="user-profile-pic-wrapper">
 											<div class="user-profile-pic-normal">
-													<img width="35" height="35" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/b2x.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/b.jpg" src="<?php echo base_url(); ?>assets/frontend/img/profiles/b.jpg" alt="" />
+													<img width="35" height="35" data-src-retina="<?php echo base_url(); ?>/<?php echo $komentar['GAMBAR_PROFIL_KECIL']; ?>" data-src="<?php echo base_url(); ?>/<?php echo $komentar['GAMBAR_PROFIL_KECIL']; ?>" src="<?php echo base_url(); ?>/<?php echo $komentar['GAMBAR_PROFIL_KECIL']; ?>" alt="" />
 												</div>
 										</div>
 										<div class="info-wrapper">					
