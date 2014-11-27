@@ -49,6 +49,41 @@ function time_elapsed_string($ptime)
 				</div>
 			</div>
 			<br />
+
+			<div class="row-fluid">
+				<div class="tiles white span12">			
+					<div class="tiles-body">
+						<h5><span class="semi-bold">Administrator Group</span></h5>
+						<div class="row-fluid">
+						<?php if (isset($admin_group)): ?>
+							<?php foreach ($admin_group as $row): ?>
+				
+							<div class="span6">
+								<div class="friend-list">
+									<div class="friend-profile-pic">
+										<div class="user-profile-pic-normal">
+										<img width="35" height="35" data-src-retina="<?php echo base_url(); ?>/<?php echo $row['GAMBAR_PROFIL']; ?>" data-src="<?php echo base_url(); ?>/<?php echo $row['GAMBAR_PROFIL']; ?>" src="<?php echo base_url(); ?>/<?php echo $row['GAMBAR_PROFIL']; ?>">
+										</div>
+									</div>
+									<div class="friend-details-wrapper">
+										<div class="friend-name">
+											<?php echo $row['NAMA'] ?>
+										</div>
+										<div class="friend-description">
+											<?php echo $row['POSTITLE'] ?>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<?php endforeach ?>
+						<?php endif ?>
+						
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<?php if ($anggota): ?>
 				
 			<div class="row-fluid">
@@ -88,7 +123,7 @@ function time_elapsed_string($ptime)
 								<div class="post">
 									<div class="user-profile-pic-wrapper">
 										<div class="user-profile-pic-normal">
-											<img width="35" height="35" src="<?php echo base_url(); ?>assets/frontend/img/profiles/c.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/c.jpg" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/c2x.jpg" />
+											<img width="35" height="35" src="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL']; ?>" data-src="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL']; ?>" data-src-retina="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL']; ?>" />
 										</div>
 									</div>
 									<div class="info-wrapper">					
@@ -106,7 +141,7 @@ function time_elapsed_string($ptime)
 										<div class="clearfix"></div>
 									
 										<ul class="action-bar">
-											<li><a href="<?php echo site_url('user/status/komentar/'.$status['ID_Group_Status']); ?>" class="muted"><i class="icon-comment"></i> <?php echo $status['jumlah_komentar'] ?> Komentar</a></li>
+											<li><a href="<?php echo site_url('group/status/komentar/'.$status['ID_Group_Status']); ?>" class="muted"><i class="icon-comment"></i> <?php echo $status['jumlah_komentar'] ?> Komentar</a></li>
 										</ul>
 										<div class="clearfix"></div>
 									</div>	

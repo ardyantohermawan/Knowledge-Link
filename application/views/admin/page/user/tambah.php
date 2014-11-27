@@ -27,7 +27,7 @@
                                                             <?php if (isset($karyawans)): ?>
                                                                 <?php foreach ($karyawans as $karyawan): ?>
                                                                     
-                                                            <option value="<?php echo $karyawan['NIK'] ?>" <?php echo (set_value('NIK') == $karyawan['NIK']) ? 'selected' : ''; ?>><?php echo $karyawan['NIK']; ?> (<?php echo $karyawan['NAMA']; ?>)</option>
+                                                            <option value="<?php echo $karyawan['NIK'] ?>" <?php echo (set_value('NIK') == $karyawan['NIK']) ? 'selected' : ''; ?>><?php echo $karyawan['NIK']; ?> - <?php echo $karyawan['NAMA']; ?> : <?php echo $karyawan['POSTITLE'] ?> <?php echo ($karyawan['TRAINING_EVENT_ID'] != '') ? '(Sertifikasi: '.$karyawan['NAMA_TRAINING'].')' : ''; ?></option>
                                                                 <?php endforeach ?>
                                                             <?php endif ?>
 
@@ -35,7 +35,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-lg-2 control-label">Kode_unit_kerja</label>
+                                                    <label class="col-lg-2 control-label">Kode Unit Kerja</label>
                                                     <div class="col-lg-10">
                                                         <select name="kode_unit_kerja" class="col-lg-12 select2">
 
@@ -50,7 +50,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-lg-2 control-label">Id_group</label>
+                                                    <label class="col-lg-2 control-label">Group</label>
                                                     <div class="col-lg-10">
                                                         <select name="id_group" class="col-lg-12 select2">
 
@@ -65,7 +65,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-lg-2 control-label">Id_akses</label>
+                                                    <label class="col-lg-2 control-label">Akses</label>
                                                     <div class="col-lg-10">
                                                         <select name="id_akses" class="col-lg-12 select2">
 
@@ -86,7 +86,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-lg-2 control-label">Password_user</label>
+                                                    <label class="col-lg-2 control-label">Password</label>
                                                     <div class="col-lg-10">
                                                         <input type="text" name="password_user" value="<?php echo (set_value('password_user')) ? set_value('password_user') : ''; ?>" class="form-control" placeholder="Masukkan password_user">
                                                     </div>
