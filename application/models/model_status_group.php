@@ -19,7 +19,7 @@ class Model_status_group extends CI_Model
 	
 	function ambil_data($id)
 	{
-		$this->db->where('ID_Status_Group', $id);
+		$this->db->where('ID_Group_Status', $id);
 		$this->db->join('m_user','m_user.ID_user=m_group_status.ID_user');
 		$this->db->join('karyawan','karyawan.NIK=m_user.NIK');
 		$query = $this->db->get('m_group_status');
@@ -63,13 +63,13 @@ class Model_status_group extends CI_Model
 	
 	function ubah_data($id, $data)
 	{
-		$this->db->where('ID_Status_Group', $id);
+		$this->db->where('ID_Group_Status', $id);
 		$this->db->update('m_group_status', $data);	
 	}
 	
 	function hapus_data($id)
 	{
-		$this->db->where('ID_Status_Group', $id);
+		$this->db->where('ID_Group_Status', $id);
 		$this->db->delete('m_group_status');
 	}
 }

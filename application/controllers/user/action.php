@@ -191,15 +191,15 @@ class Action extends CI_Controller
 		if ($this->form_validation->run('action_group_komentar_simpan') === TRUE)
 		{
 			$data = array(
-				'ID_Status' => $id_status,
+				'ID_Group_Status' => $id_status,
 				'ID_user' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
 				'KOMENTAR' => $this->input->post('komentar'),
 				'Create_Date' => date('Y-m-d H:i:s'),
 				'Last_Date' => date('Y-m-d H:i:s')
 			);
-			$this->model_komentar->simpan_data($data);
+			$this->model_komentar_group->simpan_data($data);
 			$this->session->set_flashdata('message_success', 'Data berhasil ditambahkan.');
-			redirect('user/status/komentar/'.$id_status);
+			redirect('group/status/komentar/'.$id_status);
 		}
 
 		$nik = ($this->session->userdata('NIK')) ? $this->session->userdata('NIK') : 'T535370';
@@ -211,17 +211,17 @@ class Action extends CI_Controller
 		$this->load->view('frontend/template', $data);
 	}
 
-	public function ubahKomentarGroup($id_komentar)
+	public function ubahKomentarGroup($id_status, $id_komentar)
 	{
 		if ($this->form_validation->run('action_group_komentar_ubah') === TRUE)
 		{
 			$data = array(
-				'ID_Status' => $id_komentar,
+				'ID_Group_Status' => $id_status,
 				'ID_user' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
 				'KOMENTAR' => $this->input->post('komentar'),
 				'Last_Date' => date('Y-m-d H:i:s')
 			);
-			$this->model_komentar->ubah_data($id, $data);
+			$this->model_komentar_group->ubah_data($id, $data);
 			$this->session->set_flashdata('message_success', 'Data berhasil diubah.');
 			redirect('user/komentar');
 		}
@@ -231,9 +231,9 @@ class Action extends CI_Controller
 		}
 	}
 
-	public function hapusKomentarGroup($id_komentar)
+	public function hapusKomentarGroup($id_status, $id_komentar)
 	{
-		$this->model_komentar->hapus_data($id_komentar);
+		$this->model_komentar_group->hapus_data($id_komentar);
 		$this->session->set_flashdata('message_success', 'Data berhasil dihapus.');
 		redirect('user/komentar');
 	}

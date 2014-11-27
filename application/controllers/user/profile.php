@@ -27,7 +27,7 @@ class Profile extends CI_Controller
 		$data['pendidikans'] = $this->model_pendidikan->ambil_data_per_karyawan($nik);
 		$data['pengalaman_kerjas'] = $this->model_pengalaman_kerja->ambil_data_per_karyawan($nik);
 		$data['trainings'] = $this->model_training->ambil_data_per_karyawan($nik);
-		$data['statuss'] = $this->model_status->ambil_data_timeline($id_user);
+		$data['statuss'] = $this->model_status->ambil_data_timeline_sendiri($id_user);
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['content'] = 'frontend/page/profile';
@@ -46,7 +46,7 @@ class Profile extends CI_Controller
 		$data['pendidikans'] = $this->model_pendidikan->ambil_data_per_karyawan($nik);
 		$data['pengalaman_kerjas'] = $this->model_pengalaman_kerja->ambil_data_per_karyawan($nik);
 		$data['trainings'] = $this->model_training->ambil_data_per_karyawan($nik);
-		$data['statuss'] = $this->model_status->ambil_data_timeline($id_user);
+		$data['statuss'] = $this->model_status->ambil_data_timeline_sendiri($id_user);
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['content'] = 'frontend/page/profile_karyawan';

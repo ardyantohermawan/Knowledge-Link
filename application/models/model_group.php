@@ -87,6 +87,25 @@ class Model_group extends CI_Model
 			return false;
 		}
 	}
+
+	public function ambil_admin_group($id_group)
+	{
+		$this->db->where('m_group.ID_GROUP', $id_group);
+		$this->db->where('m_akses.ID_AKSES', 5);
+		$this->db->join('m_user','m_user.ID_GROUP=m_group.ID_GROUP');
+		$this->db->join('m_akses','m_akses.ID_AKSES=m_user.ID_AKSES');
+		$this->db->join('karyawan','karyawan.NIK=m_user.NIK');
+		$query = $this->db->get('m_group');
+	
+		if ($query->num_rows() > 0)
+		{
+			return $query->result_array();
+		}
+		else
+		{
+			return array();
+		}
+	}
 	
 	function ubah_data($id, $data)
 	{

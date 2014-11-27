@@ -16,6 +16,22 @@ class Model_karyawan extends CI_Model
 			return array();	
 		}
 	}
+
+	function ambil_semua_data_dan_sertifikasi()
+	{
+		$this->db->select('*');
+		$this->db->join('sertifikasi', 'sertifikasi.NIK=karyawan.NIK', 'LEFT');
+		$query = $this->db->get('karyawan');
+	
+		if ($query->num_rows() > 0)
+		{
+			return $query->result_array();
+		}
+		else
+		{
+			return array();	
+		}
+	}
 	
 	function ambil_data($id)
 	{
