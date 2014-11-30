@@ -1,8 +1,8 @@
                 <div class="container">
-                    <h3>Daftar Training</h3>
+                    <h3>Daftar Sertifikasi</h3>
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="btn btn-info pull-right" href="<?php echo site_url('admin/training/tambah'); ?>">
+                            <a class="btn btn-info pull-right" href="<?php echo site_url('admin/sertifikasi/tambah'); ?>">
                                 <icon class="icon-plus"></icon>Tambah
                             </a>
                         </div>
@@ -28,7 +28,7 @@
                                                 Course ID
                                             </th>
                                             <th>
-                                                Nama Training
+                                                Nama Sertifikasi
                                             </th>
                                             <th>
                                                 Topik
@@ -55,23 +55,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if (isset($trainings)) { ?>
-                                        <?php foreach ($trainings as $training) { ?>
+                                        <?php if (isset($sertifikasis)) { ?>
+                                        <?php foreach ($sertifikasis as $sertifikasi) { ?>
                                         <tr>
-                                            <td><?php echo $training['NIK']; ?></td>
-                                            <td><?php echo $training['KODE_UNIT_KERJA']; ?></td>
-                                            <td><?php echo $training['TRAINING_EVENT_ID']; ?></td>
-                                            <td><?php echo $training['COURSE_ID']; ?></td>
-                                            <td><?php echo $training['NAMA_TRAINING']; ?></td>
-                                            <td><?php echo $training['TOPIK']; ?></td>
-                                            <td><?php echo $training['DURASI']; ?></td>
-                                            <td><?php echo $training['START_DATE']; ?></td>
-                                            <td><?php echo $training['END_DATE']; ?></td>
-                                            <td><?php echo $training['TEMPAT']; ?></td>
-                                            <td><?php echo $training['PENYELENGGARA']; ?></td>
+                                            <td><?php echo $sertifikasi['NIK']; ?></td>
+                                            <td><?php echo $sertifikasi['KODE_UNIT_KERJA']; ?></td>
+                                            <td><?php echo $sertifikasi['TRAINING_EVENT_ID']; ?></td>
+                                            <td><?php echo $sertifikasi['COURSE_ID']; ?></td>
+                                            <td><?php echo $sertifikasi['NAMA_TRAINING']; ?></td>
+                                            <td><?php echo $sertifikasi['TOPIK']; ?></td>
+                                            <td><?php echo $sertifikasi['DURASI']; ?></td>
+                                            <td><?php echo $sertifikasi['START_DATE']; ?></td>
+                                            <td><?php echo $sertifikasi['END_DATE']; ?></td>
+                                            <td><?php echo $sertifikasi['TEMPAT']; ?></td>
+                                            <td><?php echo $sertifikasi['PENYELENGGARA']; ?></td>
                                             <td>
-                                                <a class="btn btn-warning" href="<?php echo site_url('admin/training/edit/'.$training['ID_training']); ?>">Edit</a>
-                                                <a class="btn btn-danger" href="<?php echo site_url('admin/training/hapus/'.$training['ID_training']); ?>">Hapus</a>
+                                                <a class="btn btn-warning" href="<?php echo site_url('admin/sertifikasi/edit/'.$sertifikasi['ID_sertifikasi']); ?>">Edit</a>
+                                                <a class="btn btn-danger" href="<?php echo site_url('admin/sertifikasi/hapus/'.$sertifikasi['ID_sertifikasi']); ?>">Hapus</a>
                                             </td>
                                         </tr>
                                         

@@ -40,7 +40,7 @@ function time_elapsed_string($ptime)
 							<div class="post">
 								<div class="user-profile-pic-wrapper">
 									<div class="user-profile-pic-normal">
-										<img width="35" height="35" src="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL_KECIL']; ?>" data-src="<?php echo base_url(); ?>/<?php echo $profile['GAMBAR_PROFIL_KECIL']; ?>" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/c2x.jpg" />
+										<img width="35" height="35" src="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL_KECIL']; ?>" data-src="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL_KECIL']; ?>" data-src-retina="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL_KECIL']; ?>" />
 									</div>
 								</div>
 								<div class="info-wrapper">					
@@ -81,8 +81,14 @@ function time_elapsed_string($ptime)
 											</div>	
 											<div class="more-details">
 												<ul class="post-links">
-													<li><a href="#" class="muted">2 Minutes ago</a></li>
+													<li><a href="#" class="muted"><?php echo time_elapsed_string(strtotime($komentar['Create_Date'])) ?></a></li>
 												</ul>
+												<?php if ($komentar['ID_user'] == $this->session->userdata('id_user')): ?>
+													<ul class="post-links">
+														<li><a href="<?php echo site_url('user/action/ubahKomentar/'.$komentar['ID_Status'].'/'.$komentar['ID_Komentar']); ?>">Ubah</a></li>
+														<li><a href="<?php echo site_url('user/action/hapusKomentar/'.$komentar['ID_Status'].'/'.$komentar['ID_Komentar']); ?>">Hapus</a></li>
+													</ul>
+												<?php endif ?>
 											</div>
 											
 										</div>	

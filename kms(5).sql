@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 27, 2014 at 12:49 AM
+-- Generation Time: Nov 30, 2014 at 09:48 PM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.3
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `karyawan` (
 INSERT INTO `karyawan` (`NIK`, `KODE_UNIT_KERJA`, `NAMA`, `POSCODE`, `JABATAN`, `POSTITLE`, `UNITKERJA`, `WORKLOC`) VALUES
 ('T535370', '5342A1A', 'FIRMAN FUADI, S.A.', 'AA2310051', '51', 'SP Anlap Manajemen', 'Dep Akuntansi', '3525-00'),
 ('T535371', '534010A', 'RAMA YUSRON HARBIANSYAH, S.A.', '831500051', '51', 'SP Bang Prosedur', 'Dep Organisasi & Prosedur', '3525-00  '),
-('T535372', '535325A', 'ANDY YAZID ALYZZUDDIN, S.E.', '232100051', '51', 'SP Audit Administrasi', 'Dep Audit Administrasi', '3525-00  '),
+('T535372', '231100', 'ANDY YAZID ALYZZUDDIN, S.E.', '232100051', '1', 'SP Audit Administrasi', 'Dep Audit Administrasi', '3525-00'),
 ('T535373', 'A52310', 'GERROLEON FEBULA, S.H.', '82A200051  ', '51', 'SP Perjanjian/Kontrak, Non Litigasi & Korporasi', 'Dep Hukum & Sekretariat', '3525-00  '),
 ('T535374', 'A21520', 'MEI RINA DEWI ARIANI, S.H.', '82A200051   ', '51', 'SP Perjanjian/Kontrak, Non Litigasi & Korporasi', 'Dep Hukum & Sekretariat', '3525-00  '),
 ('T535375', 'A12411', 'ICHLAS BUDHI PRATAMA, S.H.', '82A200051', '51', 'SP Perjanjian/Kontrak, Non Litigasi & Korporasi', 'Dep Hukum & Sekretariat', '3525-00  '),
@@ -175,7 +175,18 @@ CREATE TABLE IF NOT EXISTS `m_group_komentar` (
   `Create_Date` datetime NOT NULL,
   `Last_Date` datetime NOT NULL,
   PRIMARY KEY (`ID_Group_Komentar`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `m_group_komentar`
+--
+
+INSERT INTO `m_group_komentar` (`ID_Group_Komentar`, `ID_Group_Status`, `ID_user`, `KOMENTAR`, `Create_Date`, `Last_Date`) VALUES
+(1, 5, 3, 'test', '2014-11-27 16:09:41', '2014-11-27 16:09:41'),
+(3, 5, 3, 'test', '2014-11-30 20:27:07', '2014-11-30 20:27:07'),
+(4, 5, 2, 'test', '2014-11-30 20:48:44', '2014-11-30 20:48:44'),
+(5, 7, 2, 'wwkkwkw', '2014-11-30 20:51:12', '2014-11-30 20:51:12'),
+(6, 5, 3, 'test', '2014-11-30 20:54:33', '2014-11-30 20:54:33');
 
 -- --------------------------------------------------------
 
@@ -191,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `m_group_status` (
   `Create_Date` datetime NOT NULL,
   `Last_Date` datetime NOT NULL,
   PRIMARY KEY (`ID_Group_Status`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `m_group_status`
@@ -200,7 +211,11 @@ CREATE TABLE IF NOT EXISTS `m_group_status` (
 INSERT INTO `m_group_status` (`ID_Group_Status`, `ID_GROUP`, `ID_User`, `User_status`, `Create_Date`, `Last_Date`) VALUES
 (1, 42, 1, 'wow', '2014-09-28 16:57:00', '2014-09-28 16:57:00'),
 (2, 9, 1, 'beuh', '2014-09-28 17:08:39', '2014-09-28 17:08:39'),
-(3, 9, 3, 'test\n', '2014-11-23 23:24:45', '2014-11-23 23:24:45');
+(3, 9, 3, 'test2', '2014-11-23 23:24:45', '2014-11-30 16:02:43'),
+(4, 9, 2, 'Saya Administrator di sini', '2014-11-27 10:09:10', '2014-11-27 10:09:10'),
+(5, 9, 2, 'Saya Administrator disini', '2014-11-27 10:21:08', '2014-11-27 10:21:08'),
+(6, 11, 3, 'Kosong', '2014-11-30 15:26:46', '2014-11-30 15:26:46'),
+(7, 9, 3, 'test', '2014-11-30 20:50:10', '2014-11-30 20:50:10');
 
 -- --------------------------------------------------------
 
@@ -217,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `m_komentar` (
   `Last_Date` datetime DEFAULT NULL,
   PRIMARY KEY (`ID_Komentar`,`ID_Status`),
   KEY `M_KOMENTAR_FKIndex1` (`ID_Status`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `m_komentar`
@@ -251,7 +266,8 @@ INSERT INTO `m_komentar` (`ID_Komentar`, `ID_Status`, `ID_user`, `KOMENTAR`, `Cr
 (25, 5, 1, 'sipp lah', '2014-08-24 08:41:07', '2014-08-24 15:41:07'),
 (26, 2, 1, 'biasa bro', '2014-08-24 09:00:52', '2014-08-24 16:00:52'),
 (27, 3, 1, 'wew', '2014-08-24 09:43:26', '2014-08-24 16:43:26'),
-(28, 7, 3, 'Wedew', '2014-11-23 16:20:03', '2014-11-23 23:20:03');
+(28, 7, 3, 'Wedew', '2014-11-23 16:20:03', '2014-11-23 23:20:03'),
+(30, 6, 2, 'test', '2014-11-30 13:23:09', '2014-11-30 20:23:09');
 
 -- --------------------------------------------------------
 
@@ -267,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `m_status` (
   `Last_Date` datetime DEFAULT NULL,
   PRIMARY KEY (`ID_Status`),
   KEY `M_STATUS_FKIndex1` (`ID_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `m_status`
@@ -280,7 +296,7 @@ INSERT INTO `m_status` (`ID_Status`, `ID_user`, `User_status`, `Create_Date`, `L
 (4, 1, 'Ini status percobaan ketiga', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
 (5, 1, 'Ini status percobaan keempat', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
 (6, 2, 'Ini status pertama saya', '2014-08-24 14:07:02', '2014-08-24 21:07:02'),
-(7, 3, 'Koding', '2014-11-23 10:29:58', '2014-11-23 17:29:58');
+(8, 3, 'Hue\n', '2014-11-30 06:51:54', '2014-11-30 13:54:13');
 
 -- --------------------------------------------------------
 
@@ -351,7 +367,7 @@ CREATE TABLE IF NOT EXISTS `m_user` (
   `PASSWORD_USER` varchar(50) DEFAULT NULL,
   `GAMBAR_PROFIL` varchar(200) DEFAULT NULL,
   `GAMBAR_PROFIL_KECIL` varchar(200) DEFAULT NULL,
-  `ARRAY_TEMAN` varchar(75) DEFAULT NULL,
+  `MINAT` varchar(200) DEFAULT NULL,
   `PERMINTAAN_TEMAN` int(10) unsigned DEFAULT NULL,
   `IS_AKTIF` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`ID_user`,`NIK`,`KODE_UNIT_KERJA`,`ID_GROUP`,`ID_AKSES`),
@@ -364,10 +380,10 @@ CREATE TABLE IF NOT EXISTS `m_user` (
 -- Dumping data for table `m_user`
 --
 
-INSERT INTO `m_user` (`ID_user`, `NIK`, `KODE_UNIT_KERJA`, `ID_GROUP`, `ID_AKSES`, `USERNAME`, `PASSWORD_USER`, `GAMBAR_PROFIL`, `GAMBAR_PROFIL_KECIL`, `ARRAY_TEMAN`, `PERMINTAAN_TEMAN`, `IS_AKTIF`) VALUES
+INSERT INTO `m_user` (`ID_user`, `NIK`, `KODE_UNIT_KERJA`, `ID_GROUP`, `ID_AKSES`, `USERNAME`, `PASSWORD_USER`, `GAMBAR_PROFIL`, `GAMBAR_PROFIL_KECIL`, `MINAT`, `PERMINTAAN_TEMAN`, `IS_AKTIF`) VALUES
 (1, 'T535370', 231100, 1, 1, 'T535370', '62379f894d4b64aa287812a606d2adffe6ce3be7', 'users/login-img27.jpg', 'users/login-img27_thumb.jpg', NULL, NULL, NULL),
-(2, 'T535371', 231100, 1, 2, 'T535371', '264391b3ed2f071da74ac5dde89effc5f841bff8', 'users/', 'users/', NULL, NULL, NULL),
-(3, 'T535372', 231100, 1, 3, 'T535372', '46b4c3d441a7020278b308c0129b4f50a7d898f0', 'users/foto2.jpg', 'users/foto2_thumb.jpg', NULL, NULL, NULL);
+(2, 'T535371', 231100, 9, 5, 'T535371', '264391b3ed2f071da74ac5dde89effc5f841bff8', 'users/', 'users/', NULL, NULL, NULL),
+(3, 'T535372', 231100, 1, 3, 'T535372', '46b4c3d441a7020278b308c0129b4f50a7d898f0', 'users/foto2.jpg', 'users/foto2_thumb.jpg', '9,10,11,12,13', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -397,7 +413,14 @@ CREATE TABLE IF NOT EXISTS `pendidikan` (
   `ANIK_BARU` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID_pendidikan`,`NIK`,`KODE_UNIT_KERJA`),
   KEY `Pendidikan_FKIndex1` (`NIK`,`KODE_UNIT_KERJA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `pendidikan`
+--
+
+INSERT INTO `pendidikan` (`ID_pendidikan`, `NIK`, `KODE_UNIT_KERJA`, `EDUCATION_LEVEL_NO`, `EDUCATION_LEVEL_NAME`, `EDUCATION_FIELD_NO`, `EDUCATION_FIELD_NAME`, `LOCATION`, `START_YEAR`, `END_YEAR`, `G_P_A`, `ACHIEVEMENT`, `REMARK`, `EDU_INSTITUTION_SEQ_NO`, `EDU_INSTITUTION_NAME`, `EDUCATION_LVL_RECEIVED`, `PREFERED_EDUCATION`, `ROWVERSION`, `ANIK_BARU`) VALUES
+(1, 'T535372', '231100', '1112', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1112');
 
 -- --------------------------------------------------------
 
@@ -428,7 +451,14 @@ CREATE TABLE IF NOT EXISTS `pengalaman_kerja` (
   PRIMARY KEY (`ID_pengalaman_kerja`,`NIK`,`KODE_UNIT_KERJA`),
   KEY `Pengalaman_Kerja_FKIndex1` (`NIK`,`KODE_UNIT_KERJA`),
   KEY `Pengalaman_Kerja_FKIndex2` (`KODE_UNIT_KERJA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `pengalaman_kerja`
+--
+
+INSERT INTO `pengalaman_kerja` (`ID_pengalaman_kerja`, `NIK`, `KODE_UNIT_KERJA`, `NO_SK`, `TGL_SK`, `MA_TMT`, `MKT_GOL`, `MKB_GOL`, `KODE_UPDATE`, `NM_JBT`, `NM_PL`, `NM_RU`, `NM_SI`, `NM_BAG`, `NM_DEP`, `NM_KOM`, `NM_DIR`, `KETERANGAN`, `TIMESTAMP`) VALUES
+(1, 'T535372', '231100', '1111', '2014-10-10', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1111', '1111', NULL);
 
 -- --------------------------------------------------------
 
@@ -443,7 +473,7 @@ CREATE TABLE IF NOT EXISTS `permintaan_group` (
   `Create_Date` datetime NOT NULL,
   `Last_Date` datetime NOT NULL,
   PRIMARY KEY (`ID_permintaan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `permintaan_group`
@@ -453,7 +483,9 @@ INSERT INTO `permintaan_group` (`ID_permintaan`, `ID_GROUP`, `ID_user`, `Create_
 (1, 9, 1, '2014-09-28 18:31:17', '2014-09-28 18:31:17'),
 (2, 10, 1, '2014-09-28 18:42:06', '2014-09-28 18:42:06'),
 (3, 14, 1, '2014-09-28 18:42:48', '2014-09-28 18:42:48'),
-(4, 9, 3, '2014-11-23 23:24:39', '2014-11-23 23:24:39');
+(4, 9, 3, '2014-11-23 23:24:39', '2014-11-23 23:24:39'),
+(5, 9, 2, '2014-11-27 10:08:57', '2014-11-27 10:08:57'),
+(6, 11, 3, '2014-11-30 15:26:39', '2014-11-30 15:26:39');
 
 -- --------------------------------------------------------
 
@@ -469,7 +501,7 @@ CREATE TABLE IF NOT EXISTS `permintaan_teman` (
   `Last_Update` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`ID_user`),
   KEY `Permintaan_Teman_FKIndex1` (`ID_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `permintaan_teman`
@@ -477,7 +509,11 @@ CREATE TABLE IF NOT EXISTS `permintaan_teman` (
 
 INSERT INTO `permintaan_teman` (`ID_user`, `ID_User_Request`, `ID_User_Received`, `Create_Date`, `Last_Update`) VALUES
 (1, '3', '1', '2014-11-26 16:18:22', '2014-11-26 16:18:22'),
-(2, '3', '2', '2014-11-26 16:20:13', '2014-11-26 16:20:13');
+(2, '3', '2', '2014-11-26 16:20:13', '2014-11-26 16:20:13'),
+(3, '1', '1', '2014-11-27 03:01:01', '2014-11-27 03:01:01'),
+(4, '1', '2', '2014-11-27 03:01:11', '2014-11-27 03:01:11'),
+(5, '2', '1', '2014-11-27 03:05:10', '2014-11-27 03:05:10'),
+(6, '2', '3', '2014-11-27 03:05:19', '2014-11-27 03:05:19');
 
 -- --------------------------------------------------------
 
@@ -487,15 +523,27 @@ INSERT INTO `permintaan_teman` (`ID_user`, `ID_User_Request`, `ID_User_Received`
 
 CREATE TABLE IF NOT EXISTS `pesan` (
   `ID_Pesan` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ID_user` int(10) unsigned NOT NULL,
+  `ID_User` int(11) NOT NULL,
+  `ID_Status` int(11) NOT NULL,
   `Pesan` varchar(200) DEFAULT NULL,
   `Tgl` timestamp NULL DEFAULT NULL,
-  `Subject` varchar(100) DEFAULT NULL,
-  `ID_Pengirim` int(10) unsigned DEFAULT NULL,
   `ID_Penerima` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`ID_Pesan`),
-  KEY `Pesan_FKIndex1` (`ID_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `Penerima` varchar(10) DEFAULT NULL,
+  `url` varchar(200) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID_Pesan`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `pesan`
+--
+
+INSERT INTO `pesan` (`ID_Pesan`, `ID_User`, `ID_Status`, `Pesan`, `Tgl`, `ID_Penerima`, `Penerima`, `url`, `status`) VALUES
+(2, 1, 8, 'mengomentari status', '2014-11-29 17:00:00', 1, 'group', '', 0),
+(3, 3, 6, 'mengomentari status anda', '2014-11-30 12:59:32', 2, 'user', 'http://localhost/Knowledge-Link/index.php/user/status/komentar/6/notification', 1),
+(4, 3, 5, 'mengomentari status group', '2014-11-30 13:27:08', 9, 'group', 'http://localhost/Knowledge-Link/index.php/group/status/komentar/5/notification', 1),
+(5, 2, 7, 'mengomentari status group', '2014-11-30 13:51:12', 9, 'group', 'http://localhost/Knowledge-Link/index.php/group/status/komentar/7/notification', 1),
+(6, 3, 5, 'mengomentari status group', '2014-11-30 13:54:33', 9, 'group', 'http://localhost/Knowledge-Link/index.php/group/status/komentar/5/notification', 1);
 
 -- --------------------------------------------------------
 
@@ -585,7 +633,7 @@ CREATE TABLE IF NOT EXISTS `training` (
   PRIMARY KEY (`ID_training`,`NIK`,`KODE_UNIT_KERJA`),
   KEY `Training_FKIndex1` (`NIK`,`KODE_UNIT_KERJA`),
   KEY `Training_FKIndex2` (`KODE_UNIT_KERJA`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `training`
@@ -627,7 +675,8 @@ INSERT INTO `training` (`ID_training`, `NIK`, `KODE_UNIT_KERJA`, `TRAINING_EVENT
 (33, '', '653170', '', '', '', '', '', '0000-00-00', '0000-00-00', '', ''),
 (34, '', '634610', '', '', '', '', '', '0000-00-00', '0000-00-00', '', ''),
 (35, '', '832010', '', '', '', '', '', '0000-00-00', '0000-00-00', '', ''),
-(36, '', '535010A   ', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '');
+(36, '', '535010A   ', '', '', '', '', '', '0000-00-00', '0000-00-00', '', ''),
+(37, 'T535372', '231100', '2222', '2222', '1111', '1111', '1111', '2014-10-10', '2014-10-10', '1111', '1111');
 
 -- --------------------------------------------------------
 

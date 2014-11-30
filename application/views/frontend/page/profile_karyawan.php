@@ -5,7 +5,7 @@
 						<div class="overlayer bottom-right">
 							<div class="overlayer-wrapper">
 								<div class="padding-10 hidden-phone">									
-									<button type="button" class="btn btn-primary btn-small"><i class="icon-plus"></i> Tambahkan sebagai teman</button>
+									<!-- <button type="button" class="btn btn-primary btn-small"><i class="icon-plus"></i> Tambahkan sebagai teman</button> -->
 								</div>
 							</div>
 						</div>

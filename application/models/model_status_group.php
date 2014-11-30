@@ -22,6 +22,7 @@ class Model_status_group extends CI_Model
 		$this->db->where('ID_Group_Status', $id);
 		$this->db->join('m_user','m_user.ID_user=m_group_status.ID_user');
 		$this->db->join('karyawan','karyawan.NIK=m_user.NIK');
+		$this->db->order_by('ID_Group_Status','DESC');
 		$query = $this->db->get('m_group_status');
 	
 		if ($query->num_rows() === 1)
