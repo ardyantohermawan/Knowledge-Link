@@ -1,8 +1,8 @@
 			<div class="row-fluid">
 			 	<div class="tiles white span12">
-				  	<form action="<?php echo site_url('user/action/ubahStatus/'.$status['ID_Status']); ?>" method="POST">
+				  	<form action="<?php echo site_url('user/action/ubahKomentar/'.$komentar['ID_Status'].'/'.$komentar['ID_Komentar']); ?>" method="POST">
 						<div class="tiles white">
-							<textarea rows="3" class="span12 user-status-box post-input" name="user_status" placeholder="Apa yang Anda pikirkan?"><?php echo $status['User_status']; ?></textarea>
+							<textarea rows="3" class="span12 user-status-box post-input" name="komentar" placeholder="Apa yang Anda pikirkan?"><?php echo $komentar['KOMENTAR']; ?></textarea>
 						</div>
 						<div class="tiles grey padding-10">
 						<div class="pull-right">

@@ -47,16 +47,21 @@ function time_elapsed_string($ptime)
 			<br />
 			<?php if (isset($statuss)): ?>
 			<?php foreach ($statuss as $status): ?>
+
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="grid simple vertical green">
 						<div class="grid-title no-border">
-							<h4><?php echo time_elapsed_string(strtotime($status['Create_Date'])) ?></h4>
+							<h4><?php echo $status['UNITKERJA'] ?></h4>
 							<div class="tools">
-								<a href="javascript:;" class="collapse"></a>
-								<a href="#grid-config" data-toggle="modal" class="config"></a>
-								<a href="javascript:;" class="reload"></a>
-								<a href="javascript:;" class="remove"></a>
+								<a href="javascript:;" class="collapse" title="collapse"></a>
+
+								<?php if ($status['NIK'] === $this->session->userdata('NIK')): ?>
+									
+								<a href="<?php echo site_url('user/action/ubahStatus/'.$status['ID_Status']); ?>" class="reload" title="edit"></a>
+								<a href="<?php echo site_url('user/action/hapusStatus/'.$status['ID_Status']); ?>" class="remove" title="hapus"></a>
+								<?php endif ?>
+							
 							</div>
 						</div>
 						<div class="grid-body no-border">
@@ -74,11 +79,11 @@ function time_elapsed_string($ptime)
 										<div class="info">
 											<?php echo $status['User_status']; ?>
 										</div>	
-										<!-- <div class="more-details">
+										<div class="more-details">
 											<ul class="post-links">
-												<li><a href="#" class="muted"> 2 Minutes ago</a></li>
+												<li><a href="#" class="muted"> <?php echo time_elapsed_string(strtotime($status['Create_Date'])) ?></a></li>
 											</ul>
-										</div> -->
+										</div>
 										<div class="clearfix"></div>
 									
 										<ul class="action-bar">

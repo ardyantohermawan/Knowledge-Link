@@ -31,7 +31,7 @@
                             <div class="loged-nav pull-right">
                                 <ul class="clearfix">
                                     <li class="log-nav dropdown pull-right"><a class="dropdown-toggle clearfix" data-toggle="dropdown">
-                                        <span class="pull-left loged-user-name"><?php echo ($this->session->userdata('NAMA')) ? $this->session->userdata('NAMA') : '' ?></span><span class="logged-user-thumb pull-right"><img class="img-circle" src="<?php echo base_url(); ?>assets/images/admin-avatar.jpg" alt="Admin"></span></a>
+                                        <span class="pull-left loged-user-name"><?php echo ($this->session->userdata('NAMA')) ? $this->session->userdata('NAMA') : '' ?></span><span class="logged-user-thumb pull-right"></span></a>
                                         <div class="dropdown-menu">
                                             <ul class="pull-right">
                                                 <li class="divider"></li>

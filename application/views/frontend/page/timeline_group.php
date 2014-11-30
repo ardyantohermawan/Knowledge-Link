@@ -113,9 +113,12 @@ function time_elapsed_string($ptime)
 							<h4><?php echo time_elapsed_string(strtotime($status['Create_Date'])) ?></h4>
 							<div class="tools">
 								<a href="javascript:;" class="collapse"></a>
-								<a href="#grid-config" data-toggle="modal" class="config"></a>
-								<a href="javascript:;" class="reload"></a>
-								<a href="javascript:;" class="remove"></a>
+								
+								<?php if ($status['NIK'] === $this->session->userdata('NIK')): ?>
+									
+								<a href="<?php echo site_url('user/action/ubahStatusGroup/'.$status['ID_Group_Status']); ?>" class="reload" title="edit"></a>
+								<a href="<?php echo site_url('user/action/hapusStatusGroup/'.$status['ID_Group_Status']); ?>" class="remove" title="hapus"></a>
+								<?php endif ?>
 							</div>
 						</div>
 						<div class="grid-body no-border">

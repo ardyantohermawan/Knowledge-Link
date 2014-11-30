@@ -42,6 +42,8 @@ class Login_admin extends CI_Controller
                 $this->session->set_userdata('id_user', $cek['ID_user']);
                 $this->session->set_userdata('NIK', $cek['NIK']);
                 $this->session->set_userdata('NAMA', $cek['NAMA']);
+                $this->session->set_userdata('KODE_UNIT_KERJA', $cek['KODE_UNIT_KERJA']);
+                $this->session->set_userdata('is_login', TRUE);
                 
                 if ($cek['ID_AKSES'] == 1) // Administrator
                 {

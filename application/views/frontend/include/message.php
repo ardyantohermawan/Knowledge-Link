@@ -1,5 +1,5 @@
-<?php if($this->session->flashdata('message')){ ?>
-<div class="alert">
+<?php if($this->session->flashdata('message_success')){ ?>
+<div class="alert alert-success">
 	<button class="close" data-dismiss="alert"></button>
 	<?php echo $this->session->flashdata('message_success'); ?>
 </div>

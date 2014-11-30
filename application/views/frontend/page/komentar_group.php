@@ -81,8 +81,14 @@ function time_elapsed_string($ptime)
 											</div>	
 											<div class="more-details">
 												<ul class="post-links">
-													<li><a href="#" class="muted">2 Minutes ago</a></li>
+													<li><a href="#" class="muted"><?php echo time_elapsed_string(strtotime($komentar['Create_Date'])) ?></a></li>
 												</ul>
+												<?php if ($komentar['ID_user'] == $this->session->userdata('id_user')): ?>
+												<ul class="post-links">
+													<li><a href="<?php echo site_url('user/action/ubahKomentarGroup/'.$komentar['ID_Group_Status'].'/'.$komentar['ID_Group_Komentar']); ?>">Ubah</a></li>
+													<li><a href="<?php echo site_url('user/action/hapusKomentarGroup/'.$komentar['ID_Group_Status'].'/'.$komentar['ID_Group_Komentar']); ?>">Hapus</a></li>
+												</ul>
+												<?php endif ?>
 											</div>
 											
 										</div>	

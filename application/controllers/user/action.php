@@ -18,6 +18,7 @@ class Action extends CI_Controller
 							'model_group',
 							'model_status_group',
 							'model_komentar_group',
+							'model_notifikasi'
 						));
 	}
 
@@ -44,6 +45,7 @@ class Action extends CI_Controller
 		$data['statuss'] = $this->model_status->ambil_data_timeline($id_user);
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
+		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
 		$data['content'] = 'frontend/page/timeline';
 		$this->load->view('frontend/template', $data);
 	}
@@ -62,10 +64,12 @@ class Action extends CI_Controller
 			redirect('user/timeline');
 		}
 		$nik = ($this->session->userdata('NIK')) ? $this->session->userdata('NIK') : 'T535370';
+		$id_user = ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : '1';
 		$data['profile'] = $this->model_karyawan->ambil_data_per_karyawan($nik);
 		$data['status'] = $this->model_status->ambil_data($id_status);
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
+		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
 		$data['content'] = 'frontend/page/edit_status';
 		$this->load->view('frontend/template', $data);
 	}
@@ -89,44 +93,72 @@ class Action extends CI_Controller
 				'Last_Date' => date('Y-m-d H:i:s')
 			);
 			$this->model_komentar->simpan_data($data);
+
+			$status = $this->model_status->ambil_data($id_status);
+			if ($status['ID_user'] != $this->session->userdata('id_user')) {
+				$data2 = array(
+					'ID_User' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
+					'ID_Status' => $id_status,
+					'Pesan' => 'mengomentari status anda',
+					'Tgl' => date('Y-m-d H:i:s'),
+					'ID_Penerima' => $status['ID_user'],
+					'Penerima' => 'user',
+					'url' => site_url('user/status/komentar/'.$id_status.'/notification'),
+					'status' => 0
+				);
+
+				$this->model_notifikasi->simpan_data($data2);
+			}
+
+
 			$this->session->set_flashdata('message_success', 'Data berhasil ditambahkan.');
 			redirect('user/status/komentar/'.$id_status);
 		}
 
 		$nik = ($this->session->userdata('NIK')) ? $this->session->userdata('NIK') : 'T535370';
+		$id_user = ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : '1';
 		$data['profile'] = $this->model_karyawan->ambil_data_per_karyawan($nik);
 		$data['status'] = $this->model_status->ambil_data($id_status);
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
+		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
 		$data['content'] = 'frontend/page/komentar';
 		$this->load->view('frontend/template', $data);
 	}
 
-	public function ubahKomentar($id_komentar)
+	public function ubahKomentar($id_status, $id_komentar)
 	{
 		if ($this->form_validation->run('action_komentar_ubah') === TRUE)
 		{
 			$data = array(
-				'ID_Status' => $id_komentar,
+				'ID_Status' => $id_status,
 				'ID_user' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
 				'KOMENTAR' => $this->input->post('komentar'),
 				'Last_Date' => date('Y-m-d H:i:s')
 			);
-			$this->model_komentar->ubah_data($id, $data);
+			$this->model_komentar->ubah_data($id_komentar, $data);
 			$this->session->set_flashdata('message_success', 'Data berhasil diubah.');
-			redirect('user/komentar');
+			redirect('user/status/komentar/'.$id_status);
 		}
 		else
 		{
-			$this->edit($id);
+			$nik = ($this->session->userdata('NIK')) ? $this->session->userdata('NIK') : 'T535370';
+			$id_user = ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : '1';
+			$data['profile'] = $this->model_karyawan->ambil_data_per_karyawan($nik);
+			$data['komentar'] = $this->model_komentar->ambil_data($id_komentar);
+			$data['groups'] = $this->model_group->ambil_data_parent();
+			$data['child_groups'] = $this->model_group->ambil_data_child();
+			$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+			$data['content'] = 'frontend/page/edit_komentar';
+			$this->load->view('frontend/template', $data);
 		}
 	}
 
-	public function hapusKomentar($id_komentar)
+	public function hapusKomentar($id_status, $id_komentar)
 	{
 		$this->model_komentar->hapus_data($id_komentar);
 		$this->session->set_flashdata('message_success', 'Data berhasil dihapus.');
-		redirect('user/komentar');
+		redirect('user/status/komentar/'.$id_status);
 	}
 
 
@@ -153,6 +185,7 @@ class Action extends CI_Controller
 		$data['statuss'] = $this->model_status_group->ambil_data_timeline($id_user);
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
+		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
 		$data['content'] = 'frontend/page/timeline';
 		$this->load->view('frontend/template', $data);
 	}
@@ -170,12 +203,14 @@ class Action extends CI_Controller
 			$this->session->set_flashdata('message_success', 'Data berhasil diubah.');
 			redirect('user/timeline');
 		}
+		$id_user = ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : '1';
 		$nik = ($this->session->userdata('NIK')) ? $this->session->userdata('NIK') : 'T535370';
 		$data['profile'] = $this->model_karyawan->ambil_data_per_karyawan($nik);
 		$data['status'] = $this->model_status_group->ambil_data($id_status);
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
-		$data['content'] = 'frontend/page/edit_status';
+		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['content'] = 'frontend/page/edit_status_group';
 		$this->load->view('frontend/template', $data);
 	}
 
@@ -198,15 +233,34 @@ class Action extends CI_Controller
 				'Last_Date' => date('Y-m-d H:i:s')
 			);
 			$this->model_komentar_group->simpan_data($data);
+
+			$status = $this->model_status_group->ambil_data($id_status);
+			if ($status['ID_user'] != $this->session->userdata('id_user')) {
+				$data2 = array(
+					'ID_User' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
+					'ID_Status' => $id_status,
+					'Pesan' => 'mengomentari status group',
+					'Tgl' => date('Y-m-d H:i:s'),
+					'ID_Penerima' => $status['ID_GROUP'],
+					'Penerima' => 'group',
+					'url' => site_url('group/status/komentar/'.$id_status.'/notification'),
+					'status' => 0
+				);
+
+				$this->model_notifikasi->simpan_data($data2);
+			}
+
 			$this->session->set_flashdata('message_success', 'Data berhasil ditambahkan.');
 			redirect('group/status/komentar/'.$id_status);
 		}
 
+		$id_user = ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : '1';
 		$nik = ($this->session->userdata('NIK')) ? $this->session->userdata('NIK') : 'T535370';
 		$data['profile'] = $this->model_karyawan->ambil_data_per_karyawan($nik);
 		$data['status'] = $this->model_status->ambil_data($id_status);
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
+		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
 		$data['content'] = 'frontend/page/komentar';
 		$this->load->view('frontend/template', $data);
 	}
@@ -221,13 +275,21 @@ class Action extends CI_Controller
 				'KOMENTAR' => $this->input->post('komentar'),
 				'Last_Date' => date('Y-m-d H:i:s')
 			);
-			$this->model_komentar_group->ubah_data($id, $data);
+			$this->model_komentar_group->ubah_data($id_komentar, $data);
 			$this->session->set_flashdata('message_success', 'Data berhasil diubah.');
-			redirect('user/komentar');
+			redirect('group/status/komentar/'.$id_status);
 		}
 		else
 		{
-			$this->edit($id);
+			$nik = ($this->session->userdata('NIK')) ? $this->session->userdata('NIK') : 'T535370';
+			$id_user = ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : '1';
+			$data['profile'] = $this->model_karyawan->ambil_data_per_karyawan($nik);
+			$data['komentar'] = $this->model_komentar_group->ambil_data($id_komentar);
+			$data['groups'] = $this->model_group->ambil_data_parent();
+			$data['child_groups'] = $this->model_group->ambil_data_child();
+			$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+			$data['content'] = 'frontend/page/edit_komentar_group';
+			$this->load->view('frontend/template', $data);
 		}
 	}
 
@@ -235,7 +297,7 @@ class Action extends CI_Controller
 	{
 		$this->model_komentar_group->hapus_data($id_komentar);
 		$this->session->set_flashdata('message_success', 'Data berhasil dihapus.');
-		redirect('user/komentar');
+		redirect('group/status/komentar/'.$id_status);
 	}
 
 	// FRIEND REQUEST
