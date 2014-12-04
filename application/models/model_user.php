@@ -31,6 +31,38 @@ class Model_user extends CI_Model
 			return array();	
 		}	
 	}
+
+	public function ambil_minat($id)
+	{
+		$this->db->select('MINAT');
+		$this->db->where('ID_user', $id);
+		$query = $this->db->get('m_user');
+	
+		if ($query->num_rows() === 1)
+		{
+			$minat = explode(',', $query->row_array()['MINAT']);
+			return (count($minat) > 0) ? $this->ambil_minat_group($minat) : array();
+		}
+		else
+		{
+			return array();	
+		}
+	}
+
+	function ambil_minat_group($ids)
+	{
+		$this->db->where_in('ID_GROUP', $ids);
+		$query = $this->db->get('m_group');
+	
+		if ($query->num_rows() > 0)
+		{
+			return $query->result_array();
+		}
+		else
+		{
+			return array();	
+		}	
+	}
 	
 	function simpan_data($data)
 	{

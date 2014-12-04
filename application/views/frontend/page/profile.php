@@ -31,10 +31,13 @@
 			                        <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="javascript:;" class="remove"></a> </div>
 								</div>
 								<div class="grid-body no-border">
-									<div class="row-fluid">		        						<ul class="nav nav-tabs" id="tab-01">
+									<div class="row-fluid">		        						
+										<ul class="nav nav-tabs" id="tab-01">
 						            		<li class="active"><a href="#pendidikan">Pendidikan</a></li>
 						           			<li><a href="#pengalaman_kerja">Pengalaman Kerja</a></li>
+								            <li><a href="#sertifikasi">Sertifikasi</a></li>
 								            <li><a href="#pelatihan">Pelatihan</a></li>
+								            <li><a href="#minat">Minat</a></li>
 								        </ul>
 								        <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
 						          		<div class="tab-content">
@@ -69,8 +72,8 @@
 									                                    <td><?php echo $pendidikan['EDUCATION_LEVEL_NAME']; ?></td>
 									                                    <td><?php echo $pendidikan['EDUCATION_FIELD_NAME']; ?></td>
 									                                    <td><?php echo $pendidikan['LOCATION']; ?></td>
-									                                    <td><?php echo $pendidikan['START_YEAR']; ?></td>
-									                                    <td><?php echo $pendidikan['END_YEAR']; ?></td>
+									                                    <td><?php echo date('d-m-Y', strtotime($pendidikan['START_YEAR'])); ?></td>
+									                                    <td><?php echo date('d-m-Y', strtotime($pendidikan['END_YEAR'])); ?></td>
 									                                    
 									                                </tr>
 									                                <?php } ?>
@@ -89,19 +92,19 @@
 									                            <thead>
 									                                <tr>
 									                                    <th>
-									                                        No_sk
+									                                        No. SK
 									                                    </th>
 									                                    <th>
-									                                        Mkt_gol
+									                                        Mkt Gol
 									                                    </th>
 									                                    <th>
-									                                        Nm_jbt
+									                                        Nama Jabatan
 									                                    </th>
 									                                    <th>
-									                                        Nm_pl
+									                                        Nama pl
 									                                    </th>
 									                                    <th>
-									                                        Nm_bag
+									                                        Nama bag
 									                                    </th>
 									                                    <th>
 									                                        Keterangan
@@ -126,6 +129,54 @@
 									                            </tbody>
 									                        </table>
 							                  			</div>
+							                		</div>
+							              		</div>
+							            	</div>
+							            	<div class="tab-pane" id="sertifikasi">
+							              		<div class="row-fluid">
+							                		<div class="span12">
+							                  			<div class="grid simple horizontal">
+									                        <table class="table table-hover no-more-tables table-bordered">
+									                            <thead>
+									                                <tr>
+									                                    <th>
+									                                        Nama
+									                                    </th>
+									                                    <th>
+									                                        Topik Sertifikasi
+									                                    </th>
+									                                    <th>
+									                                        Mulai
+									                                    </th>
+									                                    <th>
+									                                        Selesai
+									                                    </th>
+									                                    <th>
+									                                        Tempat
+									                                    </th>
+									                                    <th>
+									                                        Penyelenggara
+									                                    </th>
+									                                </tr>
+									                            </thead>
+									                            <tbody>
+									                                <?php if (isset($sertifikasis)) { ?>
+									                                <?php foreach ($sertifikasis as $sertifikasi) { ?>
+									                                <tr>
+									                                    <td><?php echo $sertifikasi['NAMA_TRAINING']; ?></td>
+									                                    <td><?php echo $sertifikasi['TOPIK']; ?></td>
+									                                    <td><?php echo date('d-m-Y', strtotime($sertifikasi['START_DATE'])); ?></td>
+									                                    <td><?php echo date('d-m-Y', strtotime($sertifikasi['END_DATE'])); ?></td>
+									                                    <td><?php echo $sertifikasi['TEMPAT']; ?></td>
+									                                    <td><?php echo $sertifikasi['PENYELENGGARA']; ?></td>
+									                                    
+									                                </tr>
+									                                
+									                                <?php } ?>
+									                                <?php } ?>
+									                            </tbody>
+									                        </table>
+										                </div>
 							                		</div>
 							              		</div>
 							            	</div>
@@ -162,8 +213,8 @@
 									                                <tr>
 									                                    <td><?php echo $training['NAMA_TRAINING']; ?></td>
 									                                    <td><?php echo $training['TOPIK']; ?></td>
-									                                    <td><?php echo $training['START_DATE']; ?></td>
-									                                    <td><?php echo $training['END_DATE']; ?></td>
+									                                    <td><?php echo date('d-m-Y', strtotime($training['START_DATE'])); ?></td>
+									                                    <td><?php echo date('d-m-Y', strtotime($training['END_DATE'])); ?></td>
 									                                    <td><?php echo $training['TEMPAT']; ?></td>
 									                                    <td><?php echo $training['PENYELENGGARA']; ?></td>
 									                                    
@@ -173,6 +224,22 @@
 									                                <?php } ?>
 									                            </tbody>
 									                        </table>
+										                </div>
+							                		</div>
+							              		</div>
+							            	</div>
+							            	<div class="tab-pane" id="minat">
+							              		<div class="row-fluid">
+							                		<div class="span12">
+							                  			<div class="grid simple horizontal">
+									                        <ol class="bold">
+                                    							<?php if (isset($list_minats)): ?>
+                                    								<?php foreach ($list_minats as $row): ?>
+                                    									
+                                    									<li class="normal"><?php echo $row['NAMA_GROUP'] ?></li>
+                                    								<?php endforeach ?>
+                                    							<?php endif ?>
+									                        </ol>
 										                </div>
 							                		</div>
 							              		</div>
@@ -194,7 +261,7 @@
 											<div class="post">
 												<div class="user-profile-pic-wrapper">
 													<div class="user-profile-pic-normal">
-															<img width="35" height="35" src="<?php echo base_url(); ?>assets/frontend/img/profiles/c.jpg" data-src="<?php echo base_url(); ?>assets/frontend/img/profiles/c.jpg" data-src-retina="<?php echo base_url(); ?>assets/frontend/img/profiles/c2x.jpg" />
+															<img width="35" height="35" src="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL']; ?>" data-src="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL']; ?>" data-src-retina="<?php echo base_url(); ?>/<?php echo $status['GAMBAR_PROFIL']; ?>" />
 														</div>
 												</div>
 												<div class="info-wrapper">					

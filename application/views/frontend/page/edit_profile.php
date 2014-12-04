@@ -78,6 +78,54 @@
 
         <div class="row-fluid">
             <div class="span12">
+                <div class="grid simple horizontal purple">
+                    <div class="grid-title no-border">
+                        <h4>Foto <span class="semi-bold">Saya</span></h4>
+                        <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="javascript:;" class="remove"></a> </div>
+                    </div>
+                    <div class="grid-body no-border">
+                        <div class="row-fluid column-seperation">
+                            <div class="span6">
+                                <form class="form-no-horizontal-spacing" id="form-condensed" method="POST" action="<?php echo site_url('user/profile/simpanFotoProfile/'.$profile['ID_user']) ?>" enctype="multipart/form-data" /> 
+                                <h4><span class="semi-bold">Profile</span></h4>            
+                                <div class="row-fluid">
+                                    <div class="span11">
+                                        <input type="file" id="file" name="file">
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <div class="pull-right">
+                                        <button class="btn btn-primary btn-cons" type="submit"><i class="icon-ok"></i> Simpan</button>
+                                        <button class="btn btn-white btn-cons" type="reset">Reset</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+
+                            <div class="span6">
+                                <form class="form-no-horizontal-spacing" id="form-condensed" method="POST" action="<?php echo site_url('user/profile/simpanFotoCover/'.$profile['ID_user']) ?>" enctype="multipart/form-data" /> 
+                                <h4><span class="semi-bold">Cover</span></h4>            
+                                <div class="row-fluid">
+                                    <div class="span11">
+                                        <input type="file" id="file" name="file">
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <div class="pull-right">
+                                        <button class="btn btn-primary btn-cons" type="submit"><i class="icon-ok"></i> Simpan</button>
+                                        <button class="btn btn-white btn-cons" type="reset">Reset</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span12">
                 <div class="grid simple horizontal red">
                     <div class="grid-title no-border">
                         <h4>Riwayat <span class="semi-bold">Pendidikan</span></h4>

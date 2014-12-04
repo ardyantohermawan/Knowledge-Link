@@ -373,5 +373,5 @@ $config = array(
 
     'profile_minat' => array(
         array('field' => 'minat[]', 'label' => 'minat', 'rules' => 'required'),
-    )
+    ),
 );
