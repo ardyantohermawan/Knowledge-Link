@@ -12,10 +12,12 @@ class Profile extends CI_Controller
 							'model_unit_kerja', 
 							'model_pendidikan', 
 							'model_training',
+							'model_sertifikasi',
 							'model_pengalaman_kerja',
 							'model_group',
 							'model_status',
 							'model_user',
+							'model_album',
 							'model_notifikasi'
 						));
 	}
@@ -30,8 +32,10 @@ class Profile extends CI_Controller
 		$data['pendidikans'] = $this->model_pendidikan->ambil_data_per_karyawan($nik);
 		$data['pengalaman_kerjas'] = $this->model_pengalaman_kerja->ambil_data_per_karyawan($nik);
 		$data['trainings'] = $this->model_training->ambil_data_per_karyawan($nik);
+		$data['sertifikasis'] = $this->model_sertifikasi->ambil_data_per_karyawan($nik);
 		$data['statuss'] = $this->model_status->ambil_data_timeline_sendiri($id_user);
 		$data['minats'] = explode(',', $minat['MINAT']);
+		$data['list_minats'] = $this->model_user->ambil_minat($id_user);
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
@@ -51,6 +55,7 @@ class Profile extends CI_Controller
 		$data['pendidikans'] = $this->model_pendidikan->ambil_data_per_karyawan($nik);
 		$data['pengalaman_kerjas'] = $this->model_pengalaman_kerja->ambil_data_per_karyawan($nik);
 		$data['trainings'] = $this->model_training->ambil_data_per_karyawan($nik);
+		$data['sertifikasis'] = $this->model_sertifikasi->ambil_data_per_karyawan($nik);
 		$data['statuss'] = $this->model_status->ambil_data_timeline_sendiri($id_user);
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
@@ -76,6 +81,103 @@ class Profile extends CI_Controller
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
 		$data['content'] = 'frontend/page/edit_profile';
 		$this->load->view('frontend/template', $data);
+	}
+
+	public function simpanFotoProfile($id)
+	{
+		if (isset($_FILES['file']))
+		{
+			$pics = '';
+			$pics_min = '';
+			$config['upload_path'] = realpath(APPPATH . '../users');
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']	= '2048';
+
+			$this->load->library('upload', $config);
+
+			if ($this->upload->do_upload('file'))
+			{
+				$image_data = $this->upload->data();  // image data
+                $pics = $id.'_'.$image_data['raw_name'].'_'.date('Ymd').$image_data['file_ext'];
+                $pics_min = $id.'_'.$image_data['raw_name'].'_'.date('Ymd').'_thumb'.$image_data['file_ext'];
+                $config['image_library'] = 'gd2';
+				$config['source_image'] = realpath(APPPATH. '../users/'.$image_data['client_name']);
+				$config['create_thumb'] = TRUE;
+				$config['maintain_ratio'] = TRUE;
+				$config['width'] = 80;
+				$config['height'] = 80;
+
+				$this->load->library('image_lib', $config);
+
+				$this->image_lib->resize();
+			}
+			else
+			{
+				$this->session->set_flashdata('message_error', 'Data gagal ditambahkan.');
+				redirect('user/profile/edit');
+			}
+
+			$data = array(
+				'ID_user' => $id,
+				'Nama_Album' => 'Profile',
+				'Nama_Foto' => 'users/'.$pics,
+				'Nama_Foto_Kecil' => 'users/'.$pics_min,
+				'Status' => 0,
+				'Created_Date' => date('Y-m-d H:i:s'),
+				'Last_Updated' => date('Y-m-d H:i:s'),
+			);
+
+			$this->model_album->simpan_data($data);
+			$this->session->set_flashdata('message_success', 'Data berhasil ditambahkan.');
+			redirect('user/profile/edit');
+		}
+		else
+		{
+			$this->edit();
+		}
+	}
+
+	public function simpanFotoCover($id)
+	{
+		if (isset($_FILES['file']))
+		{
+			$pics = '';
+			$pics_min = '';
+			$config['upload_path'] = realpath(APPPATH . '../users');
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']	= '2048';
+
+			$this->load->library('upload', $config);
+
+			if ($this->upload->do_upload('file'))
+			{
+				$image_data = $this->upload->data();  // image data
+                $pics = $id.'_'.$image_data['file_name'].'_'.date('Ymd');
+			}
+			else
+			{
+				$this->session->set_flashdata('message_error', 'Data gagal ditambahkan.');
+				redirect('user/profile/edit');
+			}
+
+			$data = array(
+				'ID_user' => $id,
+				'Nama_Album' => 'Cover',
+				'Nama_Foto' => 'users/'.$pics,
+				'Nama_Foto_Kecil' => '',
+				'Status' => 0,
+				'Created_Date' => date('Y-m-d H:i:s'),
+				'Last_Updated' => date('Y-m-d H:i:s'),
+			);
+
+			$this->model_album->simpan_data($data);
+			$this->session->set_flashdata('message_success', 'Data berhasil ditambahkan.');
+			redirect('user/profile/edit');
+		}
+		else
+		{
+			$this->edit();
+		}
 	}
 
 	public function simpan_profile($id)
