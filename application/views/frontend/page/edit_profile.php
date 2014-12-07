@@ -109,6 +109,9 @@
                                     <div class="span11">
                                         <input type="file" id="file" name="file">
                                     </div>
+                                    <div class="span11">
+                                        <label>* Ukuran 1287 x 452 pixels</label>
+                                    </div>
                                 </div>
                                 <div class="form-actions">
                                     <div class="pull-right">

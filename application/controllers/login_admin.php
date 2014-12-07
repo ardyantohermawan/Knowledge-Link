@@ -10,13 +10,12 @@ class Login_admin extends CI_Controller
   
     public function index()
     {
-        $session = $this->session->userdata('isLogin'); 
-        if($session == FALSE)
+        if ($this->session->userdata('akses') !== 1)
         {
             redirect('login_admin/login_form');
         }
         else
-        {
+        { 
             redirect('admin/akses');
         }
     }
@@ -44,6 +43,7 @@ class Login_admin extends CI_Controller
                 $this->session->set_userdata('NAMA', $cek['NAMA']);
                 $this->session->set_userdata('KODE_UNIT_KERJA', $cek['KODE_UNIT_KERJA']);
                 $this->session->set_userdata('is_login', TRUE);
+                $this->session->set_userdata('akses', $cek['ID_AKSES']);
                 
                 if ($cek['ID_AKSES'] == 1) // Administrator
                 {

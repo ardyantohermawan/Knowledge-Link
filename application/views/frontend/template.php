@@ -10,10 +10,13 @@
 
     <link href="<?php echo base_url(); ?>assets/frontend/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo base_url(); ?>assets/frontend/plugins/jquery-slider/css/jquery.sidr.light.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<?php echo base_url(); ?>assets/frontend/plugins/jquery-superbox/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<?php echo base_url(); ?>assets/frontend/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <!-- BEGIN CORE CSS FRAMEWORK -->
     <link href="<?php echo base_url(); ?>assets/frontend/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url(); ?>assets/frontend/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url(); ?>assets/frontend/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url(); ?>assets/frontend/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo base_url(); ?>assets/frontend/css/animate.min.css" rel="stylesheet" type="text/css" />
     <!-- END CORE CSS FRAMEWORK -->
 
@@ -76,14 +79,27 @@
     <script src="<?php echo base_url(); ?>assets/frontend/plugins/pace/pace.min.js" type="text/javascript"></script>  
     <script src="<?php echo base_url(); ?>assets/frontend/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>assets/frontend/plugins/jquery-mixitup/jquery.mixitup.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assets/frontend/plugins/jquery-superbox/js/superbox.js" type="text/javascript"></script> 
     <script src="<?php echo base_url(); ?>assets/frontend/js/tabs_accordian.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL PLUGINS -->     
     
     <script src="<?php echo base_url(); ?>assets/frontend/js/search_results.js" type="text/javascript"></script> 
+    <script src="<?php echo base_url(); ?>assets/frontend/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
 
     <!-- BEGIN CORE TEMPLATE JS --> 
     <script src="<?php echo base_url(); ?>assets/frontend/js/core.js" type="text/javascript"></script> 
     <script src="<?php echo base_url(); ?>assets/frontend/js/demo.js" type="text/javascript"></script> 
     <!-- END CORE TEMPLATE JS --> 
+
+<!-- END PAGE LEVEL PLUGINS -->     
+
+        <script>
+        $(function() {      
+            // Call SuperBox - that's it!
+            $('.superbox').SuperBox();    
+            $("#source").select2();             
+        });
+        </script>
+
 </body>
 </html>

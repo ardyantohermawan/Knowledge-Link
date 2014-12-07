@@ -9,7 +9,11 @@
 								</div>
 							</div>
 						</div>
-						<img src="<?php echo base_url(); ?>assets/frontend/img/cover_pic.png" />
+						<?php if ($profile['GAMBAR_COVER_FOTO'] != ''): ?>
+							<img src="<?php echo base_url(); ?><?php echo $profile['GAMBAR_COVER_FOTO'];?>" />
+						<?php else: ?>
+							<img src="<?php echo base_url(); ?>assets/frontend/img/cover_pic.png" />
+						<?php endif ?>
 					</div>
 					<div class="tiles white">
 						<div class="row-fluid">
@@ -38,6 +42,7 @@
 								            <li><a href="#sertifikasi">Sertifikasi</a></li>
 								            <li><a href="#pelatihan">Pelatihan</a></li>
 								            <li><a href="#minat">Minat</a></li>
+								            <li><a href="#album">Album</a></li>
 								        </ul>
 								        <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
 						          		<div class="tab-content">
@@ -240,6 +245,35 @@
                                     								<?php endforeach ?>
                                     							<?php endif ?>
 									                        </ol>
+										                </div>
+							                		</div>
+							              		</div>
+							            	</div>
+							            	<div class="tab-pane" id="album">
+							              		<div class="row-fluid">
+							                		<div class="span12">
+							                  			<div class="grid simple horizontal">
+									                        <div class="superbox">
+									                        	<?php if (isset($foto_albums)): ?>
+									                        		<?php foreach ($foto_albums as $row): ?>
+									                        			
+																<div class="superbox-list">
+																	<img class="superbox-img" alt="" data-img="<?php echo base_url(); ?><?php echo $row['Nama_Foto'] ?>" src="<?php echo base_url(); ?><?php echo $row['Nama_Foto_Kecil'] ?>">
+																</div>
+									                        		<?php endforeach ?>
+									                        	<?php endif ?>
+
+									                        	<?php if (isset($cover_albums)): ?>
+									                        		<?php foreach ($cover_albums as $row): ?>
+									                        			
+																<div class="superbox-list">
+																	<img class="superbox-img" alt="" data-img="<?php echo base_url(); ?><?php echo $row['Nama_Foto'] ?>" src="<?php echo base_url(); ?><?php echo $row['Nama_Foto'] ?>">
+																</div>
+									                        		<?php endforeach ?>
+									                        	<?php endif ?>
+																
+																<div class="superbox-float"></div>
+															</div>
 										                </div>
 							                		</div>
 							              		</div>

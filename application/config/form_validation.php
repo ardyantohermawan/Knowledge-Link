@@ -374,4 +374,10 @@ $config = array(
     'profile_minat' => array(
         array('field' => 'minat[]', 'label' => 'minat', 'rules' => 'required'),
     ),
+
+    'private_message' => array(
+        array('field' => 'penerima', 'label' => 'penerima', 'rules' => 'required'),
+        array('field' => 'judul', 'label' => 'judul', 'rules' => 'required'),
+        array('field' => 'pesan', 'label' => 'pesan', 'rules' => 'required'),
+    ),
 );

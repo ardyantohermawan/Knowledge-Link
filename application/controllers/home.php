@@ -10,7 +10,7 @@ class Home extends CI_Controller
 
     public function index()
     {
-        if($this->session->userdata('isLogin') == FALSE)
+        if($this->session->userdata('is_login') == FALSE)
         {
             redirect('login/login_form');
         }

@@ -14,15 +14,12 @@
                 <a href="<?php echo site_url('user/timeline') ?>"><img src="<?php echo base_url(); ?>images/pic04.png" class="logo" data-src="<?php echo base_url(); ?>images/pic04.png" data-src-retina="<?php echo base_url(); ?>images/pic04.png" width="150" height="106" /></a>
                 <!-- END LOGO -->
                 <ul class="nav pull-right notifcation-center">
-                    <li class="dropdown" id="header_task_bar"> 
-                        <a href="<?php echo site_url('user/timeline') ?>" class="dropdown-toggle active" data-toggle="">
-                            <div class="iconset top-home"></div>
-                        </a> 
-                    </li>
-                    <li class="dropdown" id="portrait-chat-toggler" style="display:none">
-                        <a href="#sidr" class="chat-menu-toggle">
-                            <div class="iconset top-chat-white "></div>
-                        </a> 
+
+                    <li id="header_inbox_bar" class="dropdown">
+                        <a class="dropdown-toggle" href="<?php echo site_url('user/messages') ?>">
+                            <div class="iconset top-messages"></div>
+                            <span id="msgs-badge" class="badge animated bounceIn"><?php echo (isset($messages)) ? count($messages) : ''; ?></span>
+                        </a>
                     </li>
                 </ul>
             </div>

@@ -4,7 +4,11 @@ class Akses extends CI_Controller
 {
 	function __construct()
 	{
-		parent::__construct();	
+		parent::__construct();
+		if ($this->session->userdata('akses') !== 1)
+        {
+            redirect('login_admin/login_form');
+        }
 		$this->load->model('model_akses');
 	}
 	

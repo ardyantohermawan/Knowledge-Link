@@ -6,6 +6,10 @@ class Action extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if ($this->session->userdata('is_login') !== TRUE)
+        {
+            redirect('login_admin/login_form');
+        }
 		$this->load->model(
 						array(
 							'model_karyawan', 
