@@ -141,6 +141,13 @@ class Model_karyawan extends CI_Model
 	{
 		$this->db->insert('permintaan_teman', $data);	
 	}
+
+	public function hapus_pertemanan($id_request, $id_received)
+	{
+		$this->db->where('ID_User_Request', $id_request);
+		$this->db->where('ID_User_Received', $id_received);
+		$this->db->delete('permintaan_teman');		
+	}
 	
 	function ubah_data($id, $data)
 	{

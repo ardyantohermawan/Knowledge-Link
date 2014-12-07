@@ -56,14 +56,15 @@
                 </div>
             </div>
             <div class="meta region">
-                <p><?php echo $row['NAMA_GROUP'] ?></p>
-            </div>
-            <div class="meta rec">
                 <ul>
+                    <li><?php echo $row['NAMA_GROUP'] ?></li>
                     <li><?php echo $row['CONTENT_UNIT_KERJA'] ?></li>
                     <li><?php echo $row['POSTITLE'] ?></li>
                     <li><?php echo $row['UNITKERJA'] ?></li>
                 </ul>
+            </div>
+            <div class="meta rec">
+                <a href="<?php echo site_url('user/action/hapusTeman/'.$row['ID_user']); ?>" class="btn btn-primary">Hapus</a>
             </div>
         </li>
 

@@ -134,10 +134,10 @@ function time_elapsed_string($ptime)
 							<div class="tools">
 								<a href="javascript:;" class="collapse"></a>
 								
-								<?php if ($status['NIK'] === $this->session->userdata('NIK')): ?>
+								<?php if ($status['NIK'] === $this->session->userdata('NIK') OR ($this->session->userdata('akses') == 5 && $this->session->userdata('group') == $id_group)): ?>
 									
-								<a href="<?php echo site_url('user/action/ubahStatusGroup/'.$status['ID_Group_Status']); ?>" class="reload" title="edit"></a>
-								<a href="<?php echo site_url('user/action/hapusStatusGroup/'.$status['ID_Group_Status']); ?>" class="remove" title="hapus"></a>
+								<a href="<?php echo site_url('user/action/ubahStatusGroup/'.$id_group.'/'.$status['ID_Group_Status']); ?>" class="reload" title="edit"></a>
+								<a href="<?php echo site_url('user/action/hapusStatusGroup/'.$id_group.'/'.$status['ID_Group_Status']); ?>" class="remove" title="hapus"></a>
 								<?php endif ?>
 							</div>
 						</div>
@@ -164,7 +164,7 @@ function time_elapsed_string($ptime)
 										<div class="clearfix"></div>
 									
 										<ul class="action-bar">
-											<li><a href="<?php echo site_url('group/status/komentar/'.$status['ID_Group_Status']); ?>" class="muted"><i class="icon-comment"></i> <?php echo $status['jumlah_komentar'] ?> Komentar</a></li>
+											<li><a href="<?php echo site_url('group/status/komentar/'.$id_group.'/'.$status['ID_Group_Status']); ?>" class="muted"><i class="icon-comment"></i> <?php echo $status['jumlah_komentar'] ?> Komentar</a></li>
 										</ul>
 										<div class="clearfix"></div>
 									</div>	
