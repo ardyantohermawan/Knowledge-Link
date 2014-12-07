@@ -17,8 +17,25 @@ class Model_album extends CI_Model
 		}
 	}
 
-	function ambil_data_per_karyawan($id)
+	function ambil_data_foto_per_karyawan($id)
 	{
+		$this->db->where('Nama_Album','Profile');
+		$this->db->where('ID_user', $id);
+		$query = $this->db->get('user_album');
+	
+		if ($query->num_rows() > 0)
+		{
+			return $query->result_array();
+		}
+		else
+		{
+			return array();	
+		}	
+	}
+
+	function ambil_data_cover_per_karyawan($id)
+	{
+		$this->db->where('Nama_Album','Cover');
 		$this->db->where('ID_user', $id);
 		$query = $this->db->get('user_album');
 	

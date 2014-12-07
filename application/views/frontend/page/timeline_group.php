@@ -53,33 +53,53 @@ function time_elapsed_string($ptime)
 			<div class="row-fluid">
 				<div class="tiles white span12">			
 					<div class="tiles-body">
-						<h5><span class="semi-bold">Administrator Group</span></h5>
-						<div class="row-fluid">
-						<?php if (isset($admin_group)): ?>
-							<?php foreach ($admin_group as $row): ?>
-				
-							<div class="span6">
-								<div class="friend-list">
-									<div class="friend-profile-pic">
-										<div class="user-profile-pic-normal">
-										<img width="35" height="35" data-src-retina="<?php echo base_url(); ?>/<?php echo $row['GAMBAR_PROFIL']; ?>" data-src="<?php echo base_url(); ?>/<?php echo $row['GAMBAR_PROFIL']; ?>" src="<?php echo base_url(); ?>/<?php echo $row['GAMBAR_PROFIL']; ?>">
+
+						<div class="span6">
+							<h5><span class="semi-bold">Administrator Group</span></h5>
+							<div class="row-fluid">
+							<?php if (isset($admin_group)): ?>
+								<?php foreach ($admin_group as $row): ?>
+					
+								<div class="span6">
+									<div class="friend-list">
+										<div class="friend-profile-pic">
+											<div class="user-profile-pic-normal">
+											<img width="35" height="35" data-src-retina="<?php echo base_url(); ?>/<?php echo $row['GAMBAR_PROFIL']; ?>" data-src="<?php echo base_url(); ?>/<?php echo $row['GAMBAR_PROFIL']; ?>" src="<?php echo base_url(); ?>/<?php echo $row['GAMBAR_PROFIL']; ?>">
+											</div>
 										</div>
+										<div class="friend-details-wrapper">
+											<div class="friend-name">
+												<?php echo $row['NAMA'] ?>
+											</div>
+											<div class="friend-description">
+												<?php echo $row['POSTITLE'] ?>
+											</div>
+										</div>
+										<div class="clearfix"></div>
 									</div>
-									<div class="friend-details-wrapper">
-										<div class="friend-name">
-											<?php echo $row['NAMA'] ?>
-										</div>
-										<div class="friend-description">
-											<?php echo $row['POSTITLE'] ?>
-										</div>
-									</div>
-									<div class="clearfix"></div>
 								</div>
+								<?php endforeach ?>
+							<?php endif ?>
+							
 							</div>
-							<?php endforeach ?>
-						<?php endif ?>
-						
 						</div>
+						<div class="span6">
+							<h5 class="normal">Ahli ( <span class="text-success"><?php echo (count($ahli_group) > 0) ? count($ahli_group) : '0' ?></span> )</h5><h5>
+							<ul class="my-friends">
+								<?php if (isset($ahli_group)): ?>
+									<?php foreach ($ahli_group as $row): ?>
+										
+								<li>
+									<div class="profile-pic"> 
+										<a href="<?php echo site_url('user/profile/detail/'.$row['ID_user']); ?>">
+											<img width="35" height="35" src="<?php echo base_url().$row['GAMBAR_PROFIL']; ?>" data-src="<?php echo base_url().$row['GAMBAR_PROFIL']; ?>" data-src-retina="<?php echo base_url().$row['GAMBAR_PROFIL']; ?>">
+										</a>
+									</div>
+								</li>
+									<?php endforeach ?>
+								<?php endif ?>
+							</ul>	
+						</h5></div>
 					</div>
 				</div>
 			</div>

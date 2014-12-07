@@ -6,6 +6,10 @@ class Profile extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if ($this->session->userdata('is_login') !== TRUE)
+        {
+            redirect('login_admin/login_form');
+        }
 		$this->load->model(
 						array(
 							'model_karyawan', 
@@ -36,6 +40,8 @@ class Profile extends CI_Controller
 		$data['statuss'] = $this->model_status->ambil_data_timeline_sendiri($id_user);
 		$data['minats'] = explode(',', $minat['MINAT']);
 		$data['list_minats'] = $this->model_user->ambil_minat($id_user);
+		$data['foto_albums'] = $this->model_album->ambil_data_foto_per_karyawan($id_user);
+		$data['cover_albums'] = $this->model_album->ambil_data_cover_per_karyawan($id_user);
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
@@ -57,6 +63,9 @@ class Profile extends CI_Controller
 		$data['trainings'] = $this->model_training->ambil_data_per_karyawan($nik);
 		$data['sertifikasis'] = $this->model_sertifikasi->ambil_data_per_karyawan($nik);
 		$data['statuss'] = $this->model_status->ambil_data_timeline_sendiri($id_user);
+		$data['list_minats'] = $this->model_user->ambil_minat($id_user);
+		$data['foto_albums'] = $this->model_album->ambil_data_foto_per_karyawan($id_user);
+		$data['cover_albums'] = $this->model_album->ambil_data_cover_per_karyawan($id_user);
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
@@ -89,6 +98,7 @@ class Profile extends CI_Controller
 		{
 			$pics = '';
 			$pics_min = '';
+			$config['file_name'] = $id.'_'.date('YmdHis');
 			$config['upload_path'] = realpath(APPPATH . '../users');
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']	= '2048';
@@ -97,11 +107,12 @@ class Profile extends CI_Controller
 
 			if ($this->upload->do_upload('file'))
 			{
+
 				$image_data = $this->upload->data();  // image data
-                $pics = $id.'_'.$image_data['raw_name'].'_'.date('Ymd').$image_data['file_ext'];
-                $pics_min = $id.'_'.$image_data['raw_name'].'_'.date('Ymd').'_thumb'.$image_data['file_ext'];
+                $pics = $image_data['raw_name'].$image_data['file_ext'];
+                $pics_min = $image_data['raw_name'].'_thumb'.$image_data['file_ext'];
                 $config['image_library'] = 'gd2';
-				$config['source_image'] = realpath(APPPATH. '../users/'.$image_data['client_name']);
+				$config['source_image'] = realpath(APPPATH. '../users/'.$image_data['file_name']);
 				$config['create_thumb'] = TRUE;
 				$config['maintain_ratio'] = TRUE;
 				$config['width'] = 80;
@@ -117,6 +128,7 @@ class Profile extends CI_Controller
 				redirect('user/profile/edit');
 			}
 
+			// data foto
 			$data = array(
 				'ID_user' => $id,
 				'Nama_Album' => 'Profile',
@@ -128,6 +140,23 @@ class Profile extends CI_Controller
 			);
 
 			$this->model_album->simpan_data($data);
+
+			// update status
+			$data2 = array(
+				'ID_user' => ($id == '') ? $id : $this->session->userdata('id_user'),
+				'User_status' => 'Mengubah foto profile <br/> <img src="'.base_url().'users/'.$pics.'" width="480">',
+				'Create_Date' => date('Y-m-d H:i:s'),
+				'Last_Date' => date('Y-m-d H:i:s')
+			);
+			$this->model_status->simpan_data($data2);
+
+			// update foto profile
+			$data2 = array(
+				'GAMBAR_PROFIL' => 'users/'.$pics,
+				'GAMBAR_PROFIL_KECIL' => 'users/'.$pics_min,
+			);
+			$this->model_user->ubah_data($id, $data2);
+
 			$this->session->set_flashdata('message_success', 'Data berhasil ditambahkan.');
 			redirect('user/profile/edit');
 		}
@@ -143,6 +172,7 @@ class Profile extends CI_Controller
 		{
 			$pics = '';
 			$pics_min = '';
+			$config['file_name'] = $id.'_'.date('YmdHis');
 			$config['upload_path'] = realpath(APPPATH . '../users');
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']	= '2048';
@@ -152,7 +182,7 @@ class Profile extends CI_Controller
 			if ($this->upload->do_upload('file'))
 			{
 				$image_data = $this->upload->data();  // image data
-                $pics = $id.'_'.$image_data['file_name'].'_'.date('Ymd');
+                $pics = $image_data['raw_name'].$image_data['file_ext'];
 			}
 			else
 			{
@@ -171,6 +201,22 @@ class Profile extends CI_Controller
 			);
 
 			$this->model_album->simpan_data($data);
+
+			// update status
+			$data2 = array(
+				'ID_user' => ($id == '') ? $id : $this->session->userdata('id_user'),
+				'User_status' => 'Mengubah sampul foto <br/> <img src="'.base_url().'users/'.$pics.'" width="640">',
+				'Create_Date' => date('Y-m-d H:i:s'),
+				'Last_Date' => date('Y-m-d H:i:s')
+			);
+			$this->model_status->simpan_data($data2);
+
+			// update sampul foto
+			$data2 = array(
+				'GAMBAR_COVER_FOTO' => 'users/'.$pics
+			);
+			$this->model_user->ubah_data($id, $data2);
+
 			$this->session->set_flashdata('message_success', 'Data berhasil ditambahkan.');
 			redirect('user/profile/edit');
 		}

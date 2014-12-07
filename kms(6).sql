@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 30, 2014 at 09:48 PM
+-- Generation Time: Dec 07, 2014 at 07:19 PM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.3
 
@@ -278,12 +278,12 @@ INSERT INTO `m_komentar` (`ID_Komentar`, `ID_Status`, `ID_user`, `KOMENTAR`, `Cr
 CREATE TABLE IF NOT EXISTS `m_status` (
   `ID_Status` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ID_user` int(10) unsigned NOT NULL,
-  `User_status` varchar(50) DEFAULT NULL,
+  `User_status` varchar(255) DEFAULT NULL,
   `Create_Date` timestamp NULL DEFAULT NULL,
   `Last_Date` datetime DEFAULT NULL,
   PRIMARY KEY (`ID_Status`),
   KEY `M_STATUS_FKIndex1` (`ID_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `m_status`
@@ -296,7 +296,12 @@ INSERT INTO `m_status` (`ID_Status`, `ID_user`, `User_status`, `Create_Date`, `L
 (4, 1, 'Ini status percobaan ketiga', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
 (5, 1, 'Ini status percobaan keempat', '2014-08-23 17:00:00', '2014-08-24 00:00:00'),
 (6, 2, 'Ini status pertama saya', '2014-08-24 14:07:02', '2014-08-24 21:07:02'),
-(8, 3, 'Hue\n', '2014-11-30 06:51:54', '2014-11-30 13:54:13');
+(8, 3, 'Hue\n', '2014-11-30 06:51:54', '2014-11-30 13:54:13'),
+(10, 3, 'Mengubah foto profile <br/> <img src="http://localhost/Knowledge-Link/users/3_20141207153933.png" width="480">', '2014-12-07 08:39:33', '2014-12-07 15:39:33'),
+(11, 3, 'Mengubah sampul foto <br/> <img src="http://localhost/Knowledge-Link/users/3_Screenshot_from_2014-08-28_14:48:02.png_20141207">', '2014-12-07 08:49:36', '2014-12-07 15:49:36'),
+(12, 3, 'Mengubah sampul foto <br/> <img src="http://localhost/Knowledge-Link/users/3_20141207155307.png" width="640">', '2014-12-07 08:53:07', '2014-12-07 15:53:07'),
+(13, 3, 'Mengubah foto profile <br/> <img src="http://localhost/Knowledge-Link/users/3_20141207155622.png" width="480">', '2014-12-07 08:56:22', '2014-12-07 15:56:22'),
+(14, 3, 'Mengubah sampul foto <br/> <img src="http://localhost/Knowledge-Link/users/3_20141207160246.png" width="640">', '2014-12-07 09:02:46', '2014-12-07 16:02:46');
 
 -- --------------------------------------------------------
 
@@ -367,6 +372,7 @@ CREATE TABLE IF NOT EXISTS `m_user` (
   `PASSWORD_USER` varchar(50) DEFAULT NULL,
   `GAMBAR_PROFIL` varchar(200) DEFAULT NULL,
   `GAMBAR_PROFIL_KECIL` varchar(200) DEFAULT NULL,
+  `GAMBAR_COVER_FOTO` varchar(200) NOT NULL,
   `MINAT` varchar(200) DEFAULT NULL,
   `PERMINTAAN_TEMAN` int(10) unsigned DEFAULT NULL,
   `IS_AKTIF` int(10) unsigned DEFAULT NULL,
@@ -380,10 +386,29 @@ CREATE TABLE IF NOT EXISTS `m_user` (
 -- Dumping data for table `m_user`
 --
 
-INSERT INTO `m_user` (`ID_user`, `NIK`, `KODE_UNIT_KERJA`, `ID_GROUP`, `ID_AKSES`, `USERNAME`, `PASSWORD_USER`, `GAMBAR_PROFIL`, `GAMBAR_PROFIL_KECIL`, `MINAT`, `PERMINTAAN_TEMAN`, `IS_AKTIF`) VALUES
-(1, 'T535370', 231100, 1, 1, 'T535370', '62379f894d4b64aa287812a606d2adffe6ce3be7', 'users/login-img27.jpg', 'users/login-img27_thumb.jpg', NULL, NULL, NULL),
-(2, 'T535371', 231100, 9, 5, 'T535371', '264391b3ed2f071da74ac5dde89effc5f841bff8', 'users/', 'users/', NULL, NULL, NULL),
-(3, 'T535372', 231100, 1, 3, 'T535372', '46b4c3d441a7020278b308c0129b4f50a7d898f0', 'users/foto2.jpg', 'users/foto2_thumb.jpg', '9,10,11,12,13', NULL, NULL);
+INSERT INTO `m_user` (`ID_user`, `NIK`, `KODE_UNIT_KERJA`, `ID_GROUP`, `ID_AKSES`, `USERNAME`, `PASSWORD_USER`, `GAMBAR_PROFIL`, `GAMBAR_PROFIL_KECIL`, `GAMBAR_COVER_FOTO`, `MINAT`, `PERMINTAAN_TEMAN`, `IS_AKTIF`) VALUES
+(1, 'T535370', 231100, 1, 1, 'T535370', '62379f894d4b64aa287812a606d2adffe6ce3be7', 'users/login-img27.jpg', 'users/login-img27_thumb.jpg', '', NULL, NULL, NULL),
+(2, 'T535371', 231100, 9, 5, 'T535371', '264391b3ed2f071da74ac5dde89effc5f841bff8', 'users/3_20141207155622.png', 'users/3_20141207155622_thumb.png', '', NULL, NULL, NULL),
+(3, 'T535372', 231100, 1, 3, 'T535372', '46b4c3d441a7020278b308c0129b4f50a7d898f0', 'users/3_20141207155622.png', 'users/3_20141207155622_thumb.png', 'users/3_20141207160246.png', '9,10,11,12,13', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifikasi`
+--
+
+CREATE TABLE IF NOT EXISTS `notifikasi` (
+  `ID_Notifikasi` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ID_User` int(11) NOT NULL,
+  `ID_Status` int(11) NOT NULL,
+  `Notifikasi` varchar(200) DEFAULT NULL,
+  `Tgl` timestamp NULL DEFAULT NULL,
+  `ID_Penerima` int(10) unsigned DEFAULT NULL,
+  `Penerima` varchar(10) DEFAULT NULL,
+  `url` varchar(200) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID_Notifikasi`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -523,27 +548,23 @@ INSERT INTO `permintaan_teman` (`ID_user`, `ID_User_Request`, `ID_User_Received`
 
 CREATE TABLE IF NOT EXISTS `pesan` (
   `ID_Pesan` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ID_User` int(11) NOT NULL,
-  `ID_Status` int(11) NOT NULL,
+  `ID_user` int(10) unsigned NOT NULL,
   `Pesan` varchar(200) DEFAULT NULL,
   `Tgl` timestamp NULL DEFAULT NULL,
+  `Subject` varchar(100) DEFAULT NULL,
+  `ID_Pengirim` int(10) unsigned DEFAULT NULL,
   `ID_Penerima` int(10) unsigned DEFAULT NULL,
-  `Penerima` varchar(10) DEFAULT NULL,
-  `url` varchar(200) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID_Pesan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  PRIMARY KEY (`ID_Pesan`),
+  KEY `Pesan_FKIndex1` (`ID_user`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `pesan`
 --
 
-INSERT INTO `pesan` (`ID_Pesan`, `ID_User`, `ID_Status`, `Pesan`, `Tgl`, `ID_Penerima`, `Penerima`, `url`, `status`) VALUES
-(2, 1, 8, 'mengomentari status', '2014-11-29 17:00:00', 1, 'group', '', 0),
-(3, 3, 6, 'mengomentari status anda', '2014-11-30 12:59:32', 2, 'user', 'http://localhost/Knowledge-Link/index.php/user/status/komentar/6/notification', 1),
-(4, 3, 5, 'mengomentari status group', '2014-11-30 13:27:08', 9, 'group', 'http://localhost/Knowledge-Link/index.php/group/status/komentar/5/notification', 1),
-(5, 2, 7, 'mengomentari status group', '2014-11-30 13:51:12', 9, 'group', 'http://localhost/Knowledge-Link/index.php/group/status/komentar/7/notification', 1),
-(6, 3, 5, 'mengomentari status group', '2014-11-30 13:54:33', 9, 'group', 'http://localhost/Knowledge-Link/index.php/group/status/komentar/5/notification', 1);
+INSERT INTO `pesan` (`ID_Pesan`, `ID_user`, `Pesan`, `Tgl`, `Subject`, `ID_Pengirim`, `ID_Penerima`) VALUES
+(1, 3, 'Test', '2014-12-07 11:56:46', 'Test', 3, 1),
+(2, 3, 'Test', '2014-12-07 12:06:21', 'Test', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -687,10 +708,31 @@ INSERT INTO `training` (`ID_training`, `NIK`, `KODE_UNIT_KERJA`, `TRAINING_EVENT
 CREATE TABLE IF NOT EXISTS `user_album` (
   `ID_User_Album` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ID_user` int(10) unsigned NOT NULL,
+  `Nama_Album` varchar(30) NOT NULL,
   `Nama_Foto` varchar(50) DEFAULT NULL,
+  `Nama_Foto_Kecil` varchar(50) NOT NULL,
+  `Status` tinyint(4) NOT NULL,
+  `Created_Date` datetime NOT NULL,
+  `Last_Updated` datetime NOT NULL,
   PRIMARY KEY (`ID_User_Album`,`ID_user`),
   KEY `USER_ALBUM_FKIndex1` (`ID_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `user_album`
+--
+
+INSERT INTO `user_album` (`ID_User_Album`, `ID_user`, `Nama_Album`, `Nama_Foto`, `Nama_Foto_Kecil`, `Status`, `Created_Date`, `Last_Updated`) VALUES
+(1, 3, 'Profile', 'users/3_20141205010920.png', 'users/3_20141205010920_thumb.png', 0, '2014-12-05 01:09:20', '2014-12-05 01:09:20'),
+(2, 3, 'Profile', 'users/3_20141205010928.png', 'users/3_20141205010928_thumb.png', 0, '2014-12-05 01:09:28', '2014-12-05 01:09:28'),
+(3, 3, 'Profile', 'users/3_20141205010935.png', 'users/3_20141205010935_thumb.png', 0, '2014-12-05 01:09:36', '2014-12-05 01:09:36'),
+(4, 3, 'Profile', 'users/3_20141205011334.png', 'users/3_20141205011334_thumb.png', 0, '2014-12-05 01:13:34', '2014-12-05 01:13:34'),
+(5, 3, 'Profile', 'users/3_20141207153824.png', 'users/3_20141207153824_thumb.png', 0, '2014-12-07 15:38:24', '2014-12-07 15:38:24'),
+(6, 3, 'Profile', 'users/3_20141207153933.png', 'users/3_20141207153933_thumb.png', 0, '2014-12-07 15:39:33', '2014-12-07 15:39:33'),
+(7, 3, 'Cover', 'users/3_Screenshot_from_2014-08-28_14:48:02.png_20', '', 0, '2014-12-07 15:49:36', '2014-12-07 15:49:36'),
+(8, 3, 'Cover', 'users/3_20141207155307.png', '', 0, '2014-12-07 15:53:07', '2014-12-07 15:53:07'),
+(9, 3, 'Profile', 'users/3_20141207155622.png', 'users/3_20141207155622_thumb.png', 0, '2014-12-07 15:56:22', '2014-12-07 15:56:22'),
+(10, 3, 'Cover', 'users/3_20141207160246.png', '', 0, '2014-12-07 16:02:46', '2014-12-07 16:02:46');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

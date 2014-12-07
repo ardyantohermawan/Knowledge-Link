@@ -106,6 +106,24 @@ class Model_group extends CI_Model
 			return array();
 		}
 	}
+
+	public function ambil_ahli_group($id_group)
+	{
+		$this->db->where('m_group.ID_GROUP', $id_group);
+		$this->db->join('m_user','m_user.ID_GROUP=m_group.ID_GROUP');
+		$this->db->join('karyawan','karyawan.NIK=m_user.NIK');
+		$this->db->join('sertifikasi','sertifikasi.NIK=karyawan.NIK');
+		$query = $this->db->get('m_group');
+	
+		if ($query->num_rows() > 0)
+		{
+			return $query->result_array();
+		}
+		else
+		{
+			return array();
+		}
+	}
 	
 	function ubah_data($id, $data)
 	{
