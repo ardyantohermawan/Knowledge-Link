@@ -194,21 +194,22 @@ class Action extends CI_Controller
 		$this->load->view('frontend/template', $data);
 	}
 
-	public function ubahStatusGroup($id_status)
+	public function ubahStatusGroup($id_group, $id_status)
 	{
 		if ($this->form_validation->run('action_group_status_ubah') === TRUE)
 		{
 			$data = array(
-				'ID_user' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
+				// 'ID_user' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
 				'User_status' => $this->input->post('user_status'),
 				'Last_Date' => date('Y-m-d H:i:s')
 			);
 			$this->model_status_group->ubah_data($id_status, $data);
 			$this->session->set_flashdata('message_success', 'Data berhasil diubah.');
-			redirect('user/timeline');
+			redirect('group/timeline/id/'.$id_group);
 		}
 		$id_user = ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : '1';
 		$nik = ($this->session->userdata('NIK')) ? $this->session->userdata('NIK') : 'T535370';
+		$data['id_group'] = $id_group;
 		$data['profile'] = $this->model_karyawan->ambil_data_per_karyawan($nik);
 		$data['status'] = $this->model_status_group->ambil_data($id_status);
 		$data['groups'] = $this->model_group->ambil_data_parent();
@@ -218,11 +219,11 @@ class Action extends CI_Controller
 		$this->load->view('frontend/template', $data);
 	}
 
-	public function hapusStatusGroup($id_status)
+	public function hapusStatusGroup($id_group, $id_status)
 	{
 		$this->model_status_group->hapus_data($id_status);
 		$this->session->set_flashdata('message_success', 'Data berhasil dihapus.');
-		redirect('user/timeline');
+		redirect('group/timeline/id/'.$id_group);
 	}
 
 	public function tambahKomentarGroup($id_status)
@@ -269,39 +270,38 @@ class Action extends CI_Controller
 		$this->load->view('frontend/template', $data);
 	}
 
-	public function ubahKomentarGroup($id_status, $id_komentar)
+	public function ubahKomentarGroup($id_group, $id_status, $id_komentar)
 	{
 		if ($this->form_validation->run('action_group_komentar_ubah') === TRUE)
 		{
 			$data = array(
 				'ID_Group_Status' => $id_status,
-				'ID_user' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
+				// 'ID_user' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
 				'KOMENTAR' => $this->input->post('komentar'),
 				'Last_Date' => date('Y-m-d H:i:s')
 			);
 			$this->model_komentar_group->ubah_data($id_komentar, $data);
 			$this->session->set_flashdata('message_success', 'Data berhasil diubah.');
-			redirect('group/status/komentar/'.$id_status);
+			redirect('group/status/komentar/'.$id_group.'/'.$id_status);
 		}
-		else
-		{
-			$nik = ($this->session->userdata('NIK')) ? $this->session->userdata('NIK') : 'T535370';
-			$id_user = ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : '1';
-			$data['profile'] = $this->model_karyawan->ambil_data_per_karyawan($nik);
-			$data['komentar'] = $this->model_komentar_group->ambil_data($id_komentar);
-			$data['groups'] = $this->model_group->ambil_data_parent();
-			$data['child_groups'] = $this->model_group->ambil_data_child();
-			$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
-			$data['content'] = 'frontend/page/edit_komentar_group';
-			$this->load->view('frontend/template', $data);
-		}
+
+		$nik = ($this->session->userdata('NIK')) ? $this->session->userdata('NIK') : 'T535370';
+		$id_user = ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : '1';
+		$data['profile'] = $this->model_karyawan->ambil_data_per_karyawan($nik);
+		$data['komentar'] = $this->model_komentar_group->ambil_data($id_komentar);
+		$data['groups'] = $this->model_group->ambil_data_parent();
+		$data['child_groups'] = $this->model_group->ambil_data_child();
+		$data['id_group'] = $id_group;
+		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['content'] = 'frontend/page/edit_komentar_group';
+		$this->load->view('frontend/template', $data);
 	}
 
-	public function hapusKomentarGroup($id_status, $id_komentar)
+	public function hapusKomentarGroup($id_group, $id_status, $id_komentar)
 	{
 		$this->model_komentar_group->hapus_data($id_komentar);
 		$this->session->set_flashdata('message_success', 'Data berhasil dihapus.');
-		redirect('group/status/komentar/'.$id_status);
+		redirect('group/status/komentar/'.$id_group.'/'.$id_status);
 	}
 
 	// FRIEND REQUEST
@@ -315,6 +315,14 @@ class Action extends CI_Controller
 			);
 		$this->model_karyawan->tambah_pertemanan($data);
 		$this->session->set_flashdata('message_success', 'Berhasil menambahkan pertemanan.');
+		redirect('user/friends');
+	}
+
+	public function hapusTeman($id_user)
+	{
+		$id_request = ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1;
+		$this->model_karyawan->hapus_pertemanan($id_request, $id_user);
+		$this->session->set_flashdata('message_success', 'Berhasil menghapus pertemanan.');
 		redirect('user/friends');
 	}
 

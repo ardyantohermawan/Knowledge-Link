@@ -83,10 +83,10 @@ function time_elapsed_string($ptime)
 												<ul class="post-links">
 													<li><a href="#" class="muted"><?php echo time_elapsed_string(strtotime($komentar['Create_Date'])) ?></a></li>
 												</ul>
-												<?php if ($komentar['ID_user'] == $this->session->userdata('id_user')): ?>
+												<?php if (($komentar['ID_user'] == $this->session->userdata('id_user'))  OR ($this->session->userdata('akses') == 5 && $this->session->userdata('group') == $id_group) ): ?>
 												<ul class="post-links">
-													<li><a href="<?php echo site_url('user/action/ubahKomentarGroup/'.$komentar['ID_Group_Status'].'/'.$komentar['ID_Group_Komentar']); ?>">Ubah</a></li>
-													<li><a href="<?php echo site_url('user/action/hapusKomentarGroup/'.$komentar['ID_Group_Status'].'/'.$komentar['ID_Group_Komentar']); ?>">Hapus</a></li>
+													<li><a href="<?php echo site_url('user/action/ubahKomentarGroup/'.$id_group.'/'.$komentar['ID_Group_Status'].'/'.$komentar['ID_Group_Komentar']); ?>">Ubah</a></li>
+													<li><a href="<?php echo site_url('user/action/hapusKomentarGroup/'.$id_group.'/'.$komentar['ID_Group_Status'].'/'.$komentar['ID_Group_Komentar']); ?>">Hapus</a></li>
 												</ul>
 												<?php endif ?>
 											</div>

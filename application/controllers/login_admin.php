@@ -43,8 +43,9 @@ class Login_admin extends CI_Controller
                 $this->session->set_userdata('NAMA', $cek['NAMA']);
                 $this->session->set_userdata('KODE_UNIT_KERJA', $cek['KODE_UNIT_KERJA']);
                 $this->session->set_userdata('is_login', TRUE);
+                $this->session->set_userdata('group', $cek['ID_GROUP']);
                 $this->session->set_userdata('akses', $cek['ID_AKSES']);
-                
+
                 if ($cek['ID_AKSES'] == 1) // Administrator
                 {
                     $this->session->set_flashdata('message_success', 'Selamat Datang di halaman administrator.');   

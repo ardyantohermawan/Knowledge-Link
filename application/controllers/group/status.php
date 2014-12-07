@@ -25,7 +25,7 @@ class Status extends CI_Controller
 						));
 	}
 
-	function komentar($id_status, $notif='')
+	function komentar($id_group, $id_status, $notif='')
 	{
 		if ($notif != '')
 		{
@@ -42,6 +42,7 @@ class Status extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['id_group'] = $id_group;
 		$data['content'] = 'frontend/page/komentar_group';
 		$this->load->view('frontend/template', $data);
 	}
