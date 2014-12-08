@@ -103,7 +103,7 @@ class Action extends CI_Controller
 				$data2 = array(
 					'ID_User' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
 					'ID_Status' => $id_status,
-					'Pesan' => 'mengomentari status anda',
+					'Notifikasi' => 'mengomentari status anda',
 					'Tgl' => date('Y-m-d H:i:s'),
 					'ID_Penerima' => $status['ID_user'],
 					'Penerima' => 'user',
