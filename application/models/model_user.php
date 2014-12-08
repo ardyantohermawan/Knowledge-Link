@@ -40,7 +40,8 @@ class Model_user extends CI_Model
 	
 		if ($query->num_rows() === 1)
 		{
-			$minat = explode(',', $query->row_array()['MINAT']);
+			$data = $query->row_array();
+			$minat = explode(',', $data['MINAT']);
 			return (count($minat) > 0) ? $this->ambil_minat_group($minat) : array();
 		}
 		else
