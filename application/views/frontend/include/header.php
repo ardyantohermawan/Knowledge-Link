@@ -18,7 +18,7 @@
                     <li id="header_inbox_bar" class="dropdown">
                         <a class="dropdown-toggle" href="<?php echo site_url('user/messages') ?>">
                             <div class="iconset top-messages"></div>
-                            <span id="msgs-badge" class="badge animated bounceIn"><?php echo (isset($messages)) ? count($messages) : ''; ?></span>
+                            <span id="msgs-badge" class="badge animated bounceIn"><?php echo (isset($jumlah_messages)) ? (($jumlah_messages == 0) ? '' : $jumlah_messages) : ''; ?></span>
                         </a>
                     </li>
                 </ul>

@@ -22,7 +22,8 @@ class Action extends CI_Controller
 							'model_group',
 							'model_status_group',
 							'model_komentar_group',
-							'model_notifikasi'
+							'model_notifikasi',
+							'model_pesan'
 						));
 	}
 
@@ -50,6 +51,7 @@ class Action extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/timeline';
 		$this->load->view('frontend/template', $data);
 	}
@@ -74,6 +76,7 @@ class Action extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/edit_status';
 		$this->load->view('frontend/template', $data);
 	}
@@ -126,6 +129,7 @@ class Action extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/komentar';
 		$this->load->view('frontend/template', $data);
 	}
@@ -153,6 +157,7 @@ class Action extends CI_Controller
 			$data['groups'] = $this->model_group->ambil_data_parent();
 			$data['child_groups'] = $this->model_group->ambil_data_child();
 			$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+			$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 			$data['content'] = 'frontend/page/edit_komentar';
 			$this->load->view('frontend/template', $data);
 		}
@@ -190,6 +195,7 @@ class Action extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/timeline';
 		$this->load->view('frontend/template', $data);
 	}
@@ -215,6 +221,7 @@ class Action extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/edit_status_group';
 		$this->load->view('frontend/template', $data);
 	}
@@ -244,7 +251,7 @@ class Action extends CI_Controller
 				$data2 = array(
 					'ID_User' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
 					'ID_Status' => $id_status,
-					'Pesan' => 'mengomentari status group',
+					'Notifikasi' => 'mengomentari status group',
 					'Tgl' => date('Y-m-d H:i:s'),
 					'ID_Penerima' => $status['ID_GROUP'],
 					'Penerima' => 'group',
@@ -266,6 +273,7 @@ class Action extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/komentar';
 		$this->load->view('frontend/template', $data);
 	}
@@ -293,6 +301,7 @@ class Action extends CI_Controller
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['id_group'] = $id_group;
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/edit_komentar_group';
 		$this->load->view('frontend/template', $data);
 	}

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 07, 2014 at 07:19 PM
+-- Generation Time: Dec 14, 2014 at 08:10 PM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.3
 
@@ -175,18 +175,14 @@ CREATE TABLE IF NOT EXISTS `m_group_komentar` (
   `Create_Date` datetime NOT NULL,
   `Last_Date` datetime NOT NULL,
   PRIMARY KEY (`ID_Group_Komentar`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `m_group_komentar`
 --
 
 INSERT INTO `m_group_komentar` (`ID_Group_Komentar`, `ID_Group_Status`, `ID_user`, `KOMENTAR`, `Create_Date`, `Last_Date`) VALUES
-(1, 5, 3, 'test', '2014-11-27 16:09:41', '2014-11-27 16:09:41'),
-(3, 5, 3, 'test', '2014-11-30 20:27:07', '2014-11-30 20:27:07'),
-(4, 5, 2, 'test', '2014-11-30 20:48:44', '2014-11-30 20:48:44'),
-(5, 7, 2, 'wwkkwkw', '2014-11-30 20:51:12', '2014-11-30 20:51:12'),
-(6, 5, 3, 'test', '2014-11-30 20:54:33', '2014-11-30 20:54:33');
+(5, 7, 2, '2wwkkwkw', '2014-11-30 20:51:12', '2014-12-08 01:21:04');
 
 -- --------------------------------------------------------
 
@@ -215,7 +211,7 @@ INSERT INTO `m_group_status` (`ID_Group_Status`, `ID_GROUP`, `ID_User`, `User_st
 (4, 9, 2, 'Saya Administrator di sini', '2014-11-27 10:09:10', '2014-11-27 10:09:10'),
 (5, 9, 2, 'Saya Administrator disini', '2014-11-27 10:21:08', '2014-11-27 10:21:08'),
 (6, 11, 3, 'Kosong', '2014-11-30 15:26:46', '2014-11-30 15:26:46'),
-(7, 9, 3, 'test', '2014-11-30 20:50:10', '2014-11-30 20:50:10');
+(7, 9, 3, 'testt', '2014-11-30 20:50:10', '2014-12-08 00:26:14');
 
 -- --------------------------------------------------------
 
@@ -232,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `m_komentar` (
   `Last_Date` datetime DEFAULT NULL,
   PRIMARY KEY (`ID_Komentar`,`ID_Status`),
   KEY `M_KOMENTAR_FKIndex1` (`ID_Status`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `m_komentar`
@@ -267,7 +263,9 @@ INSERT INTO `m_komentar` (`ID_Komentar`, `ID_Status`, `ID_user`, `KOMENTAR`, `Cr
 (26, 2, 1, 'biasa bro', '2014-08-24 09:00:52', '2014-08-24 16:00:52'),
 (27, 3, 1, 'wew', '2014-08-24 09:43:26', '2014-08-24 16:43:26'),
 (28, 7, 3, 'Wedew', '2014-11-23 16:20:03', '2014-11-23 23:20:03'),
-(30, 6, 2, 'test', '2014-11-30 13:23:09', '2014-11-30 20:23:09');
+(30, 6, 2, 'test', '2014-11-30 13:23:09', '2014-11-30 20:23:09'),
+(33, 14, 3, 'data', '2014-12-08 14:47:00', '2014-12-08 21:47:00'),
+(34, 4, 3, 'wawan', '2014-12-08 14:48:05', '2014-12-08 21:48:05');
 
 -- --------------------------------------------------------
 
@@ -283,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `m_status` (
   `Last_Date` datetime DEFAULT NULL,
   PRIMARY KEY (`ID_Status`),
   KEY `M_STATUS_FKIndex1` (`ID_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `m_status`
@@ -301,7 +299,8 @@ INSERT INTO `m_status` (`ID_Status`, `ID_user`, `User_status`, `Create_Date`, `L
 (11, 3, 'Mengubah sampul foto <br/> <img src="http://localhost/Knowledge-Link/users/3_Screenshot_from_2014-08-28_14:48:02.png_20141207">', '2014-12-07 08:49:36', '2014-12-07 15:49:36'),
 (12, 3, 'Mengubah sampul foto <br/> <img src="http://localhost/Knowledge-Link/users/3_20141207155307.png" width="640">', '2014-12-07 08:53:07', '2014-12-07 15:53:07'),
 (13, 3, 'Mengubah foto profile <br/> <img src="http://localhost/Knowledge-Link/users/3_20141207155622.png" width="480">', '2014-12-07 08:56:22', '2014-12-07 15:56:22'),
-(14, 3, 'Mengubah sampul foto <br/> <img src="http://localhost/Knowledge-Link/users/3_20141207160246.png" width="640">', '2014-12-07 09:02:46', '2014-12-07 16:02:46');
+(14, 3, 'Mengubah sampul foto <br/> <img src="http://localhost/Knowledge-Link/users/3_20141207160246.png" width="640">', '2014-12-07 09:02:46', '2014-12-07 16:02:46'),
+(15, 0, 'wew', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -380,7 +379,7 @@ CREATE TABLE IF NOT EXISTS `m_user` (
   KEY `User_2_FKIndex1` (`NIK`,`KODE_UNIT_KERJA`),
   KEY `M_USER_FKIndex2` (`ID_GROUP`),
   KEY `M_USER_FKIndex3` (`ID_AKSES`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `m_user`
@@ -389,7 +388,8 @@ CREATE TABLE IF NOT EXISTS `m_user` (
 INSERT INTO `m_user` (`ID_user`, `NIK`, `KODE_UNIT_KERJA`, `ID_GROUP`, `ID_AKSES`, `USERNAME`, `PASSWORD_USER`, `GAMBAR_PROFIL`, `GAMBAR_PROFIL_KECIL`, `GAMBAR_COVER_FOTO`, `MINAT`, `PERMINTAAN_TEMAN`, `IS_AKTIF`) VALUES
 (1, 'T535370', 231100, 1, 1, 'T535370', '62379f894d4b64aa287812a606d2adffe6ce3be7', 'users/login-img27.jpg', 'users/login-img27_thumb.jpg', '', NULL, NULL, NULL),
 (2, 'T535371', 231100, 9, 5, 'T535371', '264391b3ed2f071da74ac5dde89effc5f841bff8', 'users/3_20141207155622.png', 'users/3_20141207155622_thumb.png', '', NULL, NULL, NULL),
-(3, 'T535372', 231100, 1, 3, 'T535372', '46b4c3d441a7020278b308c0129b4f50a7d898f0', 'users/3_20141207155622.png', 'users/3_20141207155622_thumb.png', 'users/3_20141207160246.png', '9,10,11,12,13', NULL, NULL);
+(3, 'T535372', 231100, 1, 3, 'T535372', '46b4c3d441a7020278b308c0129b4f50a7d898f0', 'users/3_20141207155622.png', 'users/3_20141207155622_thumb.png', 'users/3_20141207160246.png', '9,10,11,12,13', NULL, NULL),
+(4, 'T535373', 524400, 10, 3, 'T535373', 'a4d4d3c9364853768139b4c757b47ea7123cbfc2', 'users/4_20141213230647.png', 'users/4_20141213230647_thumb.png', 'users/4_20141213232244.png', '14,15,16,17', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -526,7 +526,7 @@ CREATE TABLE IF NOT EXISTS `permintaan_teman` (
   `Last_Update` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`ID_user`),
   KEY `Permintaan_Teman_FKIndex1` (`ID_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `permintaan_teman`
@@ -537,8 +537,8 @@ INSERT INTO `permintaan_teman` (`ID_user`, `ID_User_Request`, `ID_User_Received`
 (2, '3', '2', '2014-11-26 16:20:13', '2014-11-26 16:20:13'),
 (3, '1', '1', '2014-11-27 03:01:01', '2014-11-27 03:01:01'),
 (4, '1', '2', '2014-11-27 03:01:11', '2014-11-27 03:01:11'),
-(5, '2', '1', '2014-11-27 03:05:10', '2014-11-27 03:05:10'),
-(6, '2', '3', '2014-11-27 03:05:19', '2014-11-27 03:05:19');
+(6, '2', '3', '2014-11-27 03:05:19', '2014-11-27 03:05:19'),
+(7, '4', '3', '2014-12-08 00:14:16', '2014-12-08 00:14:16');
 
 -- --------------------------------------------------------
 
@@ -554,17 +554,21 @@ CREATE TABLE IF NOT EXISTS `pesan` (
   `Subject` varchar(100) DEFAULT NULL,
   `ID_Pengirim` int(10) unsigned DEFAULT NULL,
   `ID_Penerima` int(10) unsigned DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID_Pesan`),
   KEY `Pesan_FKIndex1` (`ID_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `pesan`
 --
 
-INSERT INTO `pesan` (`ID_Pesan`, `ID_user`, `Pesan`, `Tgl`, `Subject`, `ID_Pengirim`, `ID_Penerima`) VALUES
-(1, 3, 'Test', '2014-12-07 11:56:46', 'Test', 3, 1),
-(2, 3, 'Test', '2014-12-07 12:06:21', 'Test', 3, 3);
+INSERT INTO `pesan` (`ID_Pesan`, `ID_user`, `Pesan`, `Tgl`, `Subject`, `ID_Pengirim`, `ID_Penerima`, `status`) VALUES
+(1, 3, 'Test', '2014-12-07 11:56:46', 'Test', 3, 1, 0),
+(4, 2, 'tester', '2014-12-08 14:54:24', 'Test', 2, 3, 1),
+(5, 3, 'rsdsdtdfdfa', '2014-12-13 04:00:40', 'tez', 3, 2, 0),
+(6, 4, 'Meeting agenda', '2014-12-14 13:03:37', 'Meeting Agenda', 4, 3, 1),
+(7, 3, 'Test', '2014-12-14 13:10:25', 'Test2', 3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -716,7 +720,7 @@ CREATE TABLE IF NOT EXISTS `user_album` (
   `Last_Updated` datetime NOT NULL,
   PRIMARY KEY (`ID_User_Album`,`ID_user`),
   KEY `USER_ALBUM_FKIndex1` (`ID_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `user_album`
@@ -732,7 +736,8 @@ INSERT INTO `user_album` (`ID_User_Album`, `ID_user`, `Nama_Album`, `Nama_Foto`,
 (7, 3, 'Cover', 'users/3_Screenshot_from_2014-08-28_14:48:02.png_20', '', 0, '2014-12-07 15:49:36', '2014-12-07 15:49:36'),
 (8, 3, 'Cover', 'users/3_20141207155307.png', '', 0, '2014-12-07 15:53:07', '2014-12-07 15:53:07'),
 (9, 3, 'Profile', 'users/3_20141207155622.png', 'users/3_20141207155622_thumb.png', 0, '2014-12-07 15:56:22', '2014-12-07 15:56:22'),
-(10, 3, 'Cover', 'users/3_20141207160246.png', '', 0, '2014-12-07 16:02:46', '2014-12-07 16:02:46');
+(10, 3, 'Cover', 'users/3_20141207160246.png', '', 0, '2014-12-07 16:02:46', '2014-12-07 16:02:46'),
+(11, 4, 'Cover', 'users/4_20141213232244.png', '', 0, '2014-12-13 23:22:44', '2014-12-13 23:22:44');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

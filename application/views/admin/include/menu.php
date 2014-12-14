@@ -15,8 +15,9 @@
                                     <li><a href="<?php echo site_url('admin/training'); ?>"><i class="icon-brain"></i><span class="shortcut-label">Training</span></a></li>
                                     <li><a href="<?php echo site_url('admin/unit_kerja'); ?>"><i class="icon-office"></i><span class="shortcut-label">Unit Kerja</span></a></li>
                                     <li><a href="<?php echo site_url('admin/user'); ?>"><i class="icon-user"></i><span class="shortcut-label">User</span></a></li>
+                                    <li><a href="<?php echo site_url('admin/private_message'); ?>"><i class="icon-envelope"></i><span class="shortcut-label">Pesan</span></a></li>
                                     <!-- <li><a href="<?php // echo site_url('admin/koneksi'); ?>"><i class="icon-user-plus"></i><span class="shortcut-label">Koneksi</span></a></li> -->
-                                    <!-- <li><a href="<?php // echo site_url('admin/album'); ?>"><i class="icon-images"></i><span class="shortcut-label">Album</span></a></li> -->
+                                    <li><a href="<?php echo site_url('admin/album'); ?>"><i class="icon-images"></i><span class="shortcut-label">Album</span></a></li>
                                 </ul>
                             </div>
                             <ul class="breadcrumb">
