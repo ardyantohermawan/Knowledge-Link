@@ -220,6 +220,20 @@ $config = array(
         array('field' => 'penyelenggara', 'label' => 'penyelenggara', 'rules' => 'required')
     ),
 
+    'private_message_simpan' => array(
+        array('field' => 'pengirim', 'label' => 'pengirim', 'rules' => 'required'),
+        array('field' => 'penerima', 'label' => 'penerima', 'rules' => 'required'),
+        array('field' => 'judul', 'label' => 'judul', 'rules' => 'required'),
+        array('field' => 'pesan', 'label' => 'pesan', 'rules' => 'required'),
+    ),
+
+    'private_message_ubah' => array(
+        array('field' => 'pengirim', 'label' => 'pengirim', 'rules' => 'required'),
+        array('field' => 'penerima', 'label' => 'penerima', 'rules' => 'required'),
+        array('field' => 'judul', 'label' => 'judul', 'rules' => 'required'),
+        array('field' => 'pesan', 'label' => 'pesan', 'rules' => 'required'),
+    ),
+
 
     // User access validation
     'action_status_simpan' => array(

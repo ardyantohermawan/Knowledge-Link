@@ -22,7 +22,8 @@ class Profile extends CI_Controller
 							'model_status',
 							'model_user',
 							'model_album',
-							'model_notifikasi'
+							'model_notifikasi',
+							'model_pesan'
 						));
 	}
 
@@ -45,6 +46,7 @@ class Profile extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/profile';
 		$this->load->view('frontend/template', $data);
 	}
@@ -69,6 +71,7 @@ class Profile extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/profile_karyawan';
 		$this->load->view('frontend/template', $data);
 	}
@@ -88,6 +91,7 @@ class Profile extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/edit_profile';
 		$this->load->view('frontend/template', $data);
 	}
@@ -151,11 +155,11 @@ class Profile extends CI_Controller
 			$this->model_status->simpan_data($data2);
 
 			// update foto profile
-			$data2 = array(
+			$data3 = array(
 				'GAMBAR_PROFIL' => 'users/'.$pics,
 				'GAMBAR_PROFIL_KECIL' => 'users/'.$pics_min,
 			);
-			$this->model_user->ubah_data($id, $data2);
+			$this->model_user->ubah_data($id, $data3);
 
 			$this->session->set_flashdata('message_success', 'Data berhasil ditambahkan.');
 			redirect('user/profile/edit');
@@ -212,10 +216,10 @@ class Profile extends CI_Controller
 			$this->model_status->simpan_data($data2);
 
 			// update sampul foto
-			$data2 = array(
+			$data3 = array(
 				'GAMBAR_COVER_FOTO' => 'users/'.$pics
 			);
-			$this->model_user->ubah_data($id, $data2);
+			$this->model_user->ubah_data($id, $data3);
 
 			$this->session->set_flashdata('message_success', 'Data berhasil ditambahkan.');
 			redirect('user/profile/edit');
@@ -316,6 +320,7 @@ class Profile extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/edit_profile_pendidikan';
 		$this->load->view('frontend/template', $data);
 	}
@@ -400,6 +405,7 @@ class Profile extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/edit_profile_pengalaman_kerja';
 		$this->load->view('frontend/template', $data);
 	}
@@ -476,6 +482,7 @@ class Profile extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/edit_profile_training';
 		$this->load->view('frontend/template', $data);
 	}

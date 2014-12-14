@@ -42,9 +42,10 @@ function time_elapsed_string($ptime)
 						<table id="emails" class="table table-striped table-fixed-layout table-hover"> 
 							<thead>
 								<tr>
-									<th class="medium-cell"></th>
-									<th></th>
-									<th class="medium-cell"></th>
+									<th>Pengirim</th>
+									<th>Pesan</th>
+									<th>Tanggal</th>
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -52,9 +53,10 @@ function time_elapsed_string($ptime)
 									<?php foreach ($messages as $message): ?>
 										
 								<tr>
-									<td valign="middle" class="clickable"><?php echo $message['NAMA'] ?></td>
-									<td valign="middle" class="clickable tablefull"><span class="muted"><?php echo $message['Pesan'] ?></span></td>
-									<td class="clickable"><span class="muted"><?php echo time_elapsed_string(strtotime($message['Tgl'])) ?> </span></td>
+									<td valign="middle"><a href="<?php echo site_url('user/messages/detail/'.$message['ID_Pesan'].'/notification') ?>"><?php echo $message['NAMA'] ?></a></td>
+									<td valign="middle"><a href="<?php echo site_url('user/messages/detail/'.$message['ID_Pesan'].'/notification') ?>"><span class="muted"><?php echo $message['Pesan'] ?></span></a></td>
+									<td><span class="muted"><a href="<?php echo site_url('user/messages/detail/'.$message['ID_Pesan'].'/notification') ?>"><?php echo date('d-m-Y H:i:s', strtotime($message['Tgl'])) ?> </span></a></td>
+									<td valign="middle"><a href="<?php echo site_url('user/messages/hapus/'.$message['ID_Pesan']) ?>" class="btn btn-danger">Hapus</a></td>
 								</tr>											
 									<?php endforeach ?>
 								<?php endif ?>

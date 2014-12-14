@@ -20,7 +20,8 @@ class Status extends CI_Controller
 							'model_group',
 							'model_status',
 							'model_komentar',
-							'model_notifikasi'
+							'model_notifikasi',
+							'model_pesan'
 						));
 	}
 
@@ -42,6 +43,7 @@ class Status extends CI_Controller
 		$data['groups'] = $this->model_group->ambil_data_parent();
 		$data['child_groups'] = $this->model_group->ambil_data_child();
 		$data['notifications'] = $this->model_notifikasi->ambil_semua_data($id_user);
+		$data['jumlah_messages'] = count($this->model_pesan->ambil_data_per_karyawan_belum_dibaca($id_user));
 		$data['content'] = 'frontend/page/komentar';
 		$this->load->view('frontend/template', $data);
 

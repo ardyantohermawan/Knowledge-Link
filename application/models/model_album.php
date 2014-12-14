@@ -5,6 +5,9 @@ class Model_album extends CI_Model
 	function ambil_semua_data()
 	{
 		$this->db->select('*');
+		$this->db->join('m_user', 'm_user.ID_user=user_album.ID_user');
+		$this->db->join('karyawan', 'karyawan.NIK=m_user.NIK');
+		$this->db->order_by('user_album.Created_Date', 'DESC');
 		$query = $this->db->get('user_album');
 	
 		if ($query->num_rows() > 0)
