@@ -84,6 +84,7 @@ class User extends CI_Controller
 	function edit($id)
 	{
 		$data['karyawans'] = $this->model_karyawan->ambil_semua_data_dan_sertifikasi();
+		$data['sertifikasis'] = $this->model_sertifikasi->array_sertifikasi();
 		$data['aksess'] = $this->model_akses->ambil_semua_data();
 		$data['unit_kerjas'] = $this->model_unit_kerja->ambil_semua_data();
 		$data['groups'] = $this->model_group->ambil_semua_data();

@@ -27,7 +27,7 @@
                                                             <?php if (isset($karyawans)): ?>
                                                                 <?php foreach ($karyawans as $karyawan): ?>
                                                                     
-                                                            <option value="<?php echo $karyawan['NIK'] ?>" <?php echo ($user['NIK'] == $karyawan['NIK']) ? 'selected' : ''; ?>><?php echo $karyawan['NIK']; ?> - <?php echo $karyawan['NAMA']; ?> : <?php echo $karyawan['POSTITLE'] ?> <?php echo ($karyawan['TRAINING_EVENT_ID'] != '') ? '(Sertifikasi: '.$karyawan['NAMA_TRAINING'].')' : ''; ?></option>
+                                                            <option value="<?php echo $karyawan['NIK'] ?>" <?php echo ($user['NIK'] == $karyawan['NIK']) ? 'selected' : ''; ?>><?php echo $karyawan['NIK']; ?> - <?php echo $karyawan['NAMA']; ?> : <?php echo $karyawan['POSTITLE'] ?> <?php echo (isset($sertifikasis[$karyawan['NIK']]['TRAINING_EVENT_ID'])) ? '(Sertifikasi: '.$sertifikasis[$karyawan['NIK']]['NAMA_TRAINING'].')' : ''; ?></option>
                                                                 <?php endforeach ?>
                                                             <?php endif ?>
 
