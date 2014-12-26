@@ -66,7 +66,7 @@
                                                     <?php echo $row["NAMA"] ?>
                                                 </div>
                                                 <div class="description">
-                                                    <?php echo $row["Pesan"] ?>
+                                                    <?php echo $row["Notifikasi"] ?>
                                                 </div>
                                                 <div class="date pull-left">
                                                 <?php echo $row["Tgl"]; ?>

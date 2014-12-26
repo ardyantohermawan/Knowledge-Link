@@ -32,6 +32,26 @@ class Model_sertifikasi extends CI_Model
 		}	
 	}
 
+	public function array_sertifikasi()
+	{
+		$this->db->select('*');
+		$query = $this->db->get('sertifikasi');
+		
+		$data = array();
+		if ($query->num_rows() > 0)
+		{
+			foreach ($query->result_array() as $row)
+			{
+				$data[$row['NIK']] = $row;
+			}
+			return $data;
+		}
+		else
+		{
+			return array();	
+		}
+	}
+
 	function ambil_data_per_karyawan($nik)
 	{
 		$this->db->where('NIK', $nik);

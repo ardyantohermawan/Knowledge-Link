@@ -9,7 +9,7 @@ class User extends CI_Controller
         {
             redirect('login_admin/login_form');
         }
-		$this->load->model(array('model_user', 'model_karyawan', 'model_akses', 'model_unit_kerja', 'model_group'));
+		$this->load->model(array('model_user', 'model_karyawan', 'model_akses', 'model_unit_kerja', 'model_group', 'model_sertifikasi'));
 	}
 	
 	function index()
@@ -22,11 +22,13 @@ class User extends CI_Controller
 	function tambah()
 	{
 		$data['karyawans'] = $this->model_karyawan->ambil_semua_data_dan_sertifikasi();
+		$data['sertifikasis'] = $this->model_sertifikasi->array_sertifikasi();
 		$data['aksess'] = $this->model_akses->ambil_semua_data();
 		$data['unit_kerjas'] = $this->model_unit_kerja->ambil_semua_data();
 		$data['groups'] = $this->model_group->ambil_semua_data();
 		$data['content'] = 'admin/page/user/tambah';
 		$this->load->view('admin/template', $data);	
+		// var_dump($data['sertifikasis']);
 	}
 	
 	function simpan()

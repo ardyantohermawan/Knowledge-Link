@@ -67,6 +67,9 @@
                                                 Rowversion
                                             </th>
                                             <th>
+                                                Anik Baru
+                                            </th>
+                                            <th>
                                                 Action
                                             </th>
                                             
