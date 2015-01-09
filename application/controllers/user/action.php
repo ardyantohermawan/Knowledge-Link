@@ -117,6 +117,43 @@ class Action extends CI_Controller
 				$this->model_notifikasi->simpan_data($data2);
 			}
 
+			if ($status['ID_user'] != $this->session->userdata('id_user')) {
+				$data2 = array(
+					'ID_User' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
+					'ID_Status' => $id_status,
+					'Notifikasi' => 'mengomentari status anda',
+					'Tgl' => date('Y-m-d H:i:s'),
+					'ID_Penerima' => $status['ID_user'],
+					'Penerima' => 'user',
+					'url' => site_url('user/status/komentar/'.$id_status.'/notification'),
+					'status' => 0
+				);
+
+				$this->model_notifikasi->simpan_data($data2);
+			}
+			else
+			{
+				$lists = $this->model_komentar->ambil_data_user_per_status($id_status);
+				$users = array();
+				if (isset($lists))
+				{
+					foreach ($lists as $row) {
+						$data3 = array(
+							'ID_User' => ($this->session->userdata('id_user')) ? $this->session->userdata('id_user') : 1,
+							'ID_Status' => $id_status,
+							'Notifikasi' => 'mengomentari statusnya',
+							'Tgl' => date('Y-m-d H:i:s'),
+							'ID_Penerima' => $row['ID_user'],
+							'Penerima' => 'user',
+							'url' => site_url('user/status/komentar/'.$id_status.'/notification'),
+							'status' => 0
+						);
+
+						$this->model_notifikasi->simpan_data($data3);
+					}
+				}
+			}
+
 
 			$this->session->set_flashdata('message_success', 'Data berhasil ditambahkan.');
 			redirect('user/status/komentar/'.$id_status);

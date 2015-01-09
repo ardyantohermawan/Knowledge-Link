@@ -113,6 +113,7 @@ class Model_group extends CI_Model
 		$this->db->join('m_user','m_user.ID_GROUP=m_group.ID_GROUP');
 		$this->db->join('karyawan','karyawan.NIK=m_user.NIK');
 		$this->db->join('sertifikasi','sertifikasi.NIK=karyawan.NIK');
+		$this->db->group_by('m_user.NIK');
 		$query = $this->db->get('m_group');
 	
 		if ($query->num_rows() > 0)

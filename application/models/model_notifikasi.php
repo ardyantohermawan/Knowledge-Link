@@ -17,6 +17,8 @@ class Model_notifikasi extends CI_Model
 		$this->db->where('Penerima', 'user');
 		$this->db->join('m_user','m_user.ID_User=notifikasi.ID_user');
 		$this->db->join('karyawan','karyawan.NIK=m_user.NIK');
+		$this->db->group_by('notifikasi.ID_Status');
+		$this->db->group_by('m_user.ID_User');
 		$query = $this->db->get('notifikasi');
 	
 		if ($query->num_rows() > 0)
@@ -38,6 +40,8 @@ class Model_notifikasi extends CI_Model
 		$this->db->join('permintaan_group','permintaan_group.ID_GROUP=m_group.ID_GROUP');
 		$this->db->join('m_user','m_user.ID_User=notifikasi.ID_user');
 		$this->db->join('karyawan','karyawan.NIK=m_user.NIK');
+		$this->db->group_by('notifikasi.ID_Status');
+		$this->db->group_by('m_user.ID_User');
 		$query = $this->db->get('notifikasi');
 	
 		if ($query->num_rows() > 0)

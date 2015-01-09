@@ -32,6 +32,23 @@ class Model_user extends CI_Model
 		}	
 	}
 
+	function ambil_id($NIK)
+	{
+		$this->db->where('NIK', $NIK);
+		$this->db->order_by('ID_user', 'DESC');
+		$this->db->limit(1);
+		$query = $this->db->get('m_user');
+	
+		if ($query->num_rows() === 1)
+		{
+			return $query->row_array();
+		}
+		else
+		{
+			return array();	
+		}	
+	}
+
 	public function ambil_minat($id)
 	{
 		$this->db->select('MINAT');
