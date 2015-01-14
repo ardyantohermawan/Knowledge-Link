@@ -76,10 +76,10 @@ class User extends CI_Controller
 			if ($this->input->post('id_akses') == 5)
 			{
 				$user = $this->model_user->ambil_id($this->input->post('NIK'));
-				if (isset($user['id_user']))
+				if (isset($user['ID_user']))
 				{
 					$data2 = array(
-							'ID_user' => ($user['id_user']) ? $user['id_user'] : 1,
+							'ID_user' => ($user['ID_user']) ? $user['ID_user'] : 1,
 							'ID_GROUP' => $this->input->post('id_group'),
 							'Create_Date' => date('Y-m-d H:i:s'),
 							'Last_Date' => date('Y-m-d H:i:s')
@@ -127,6 +127,22 @@ class User extends CI_Controller
 			}
 
 			$this->model_user->ubah_data($id, $data);
+
+			if ($this->input->post('id_akses') == 5)
+			{
+				$user = $this->model_user->ambil_id($this->input->post('NIK'));
+				if (isset($user['ID_user']))
+				{
+					$data2 = array(
+							'ID_user' => ($user['ID_user']) ? $user['ID_user'] : 1,
+							'ID_GROUP' => $this->input->post('id_group'),
+							'Create_Date' => date('Y-m-d H:i:s'),
+							'Last_Date' => date('Y-m-d H:i:s')
+						);
+					$this->model_group->tambah_anggota($data2);
+				}
+			}
+			
 			$this->session->set_flashdata('message_success', 'Data berhasil diubah.');
 			redirect('admin/user');
 		}
